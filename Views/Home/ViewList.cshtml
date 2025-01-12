@@ -13,11 +13,12 @@
     }
     else
     {
-        <table class="table table-striped mt-4">
+        <table class="table table-striped">
             <thead>
                 <tr>
                     <th>Class</th>
                     <th>Title</th>
+                    <th>Season</th>
                     <th>Year Finished</th>
                     <th>Rating</th>
                     <th>Review</th>
@@ -29,9 +30,15 @@
                     <tr>
                         <td>@item.Class</td>
                         <td>@item.Title</td>
+                        <td>@(item.Class == "Show" ? item.Season.ToString() : "NULL")</td> <!-- Display Season or NULL -->
                         <td>@item.YearFinished</td>
-                        <td>@item.Rating ★</td>
-                        <td>@(string.IsNullOrEmpty(item.Review) ? "No Review" : item.Review)</td>
+                        <td>
+                            @for (int i = 0; i < item.Rating; i++)
+                            {
+                                <span>★</span> 
+                            }
+                        </td>
+                        <td>@item.Review</td>
                     </tr>
                 }
             </tbody>
