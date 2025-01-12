@@ -43,7 +43,7 @@ namespace AppDev.Controllers
         {
             if (Class != "Show")
             {
-                Season = null; // Set Season to NULL if Class is not "Show"
+                Season = null; 
             }
 
             MediaList.Add(new MediaItem
