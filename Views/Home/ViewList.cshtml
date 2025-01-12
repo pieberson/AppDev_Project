@@ -1,6 +1,40 @@
-﻿@{
+@model List<AppDev.Models.MediaItem>
+
+@{
     ViewData["Title"] = "View List";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Use this page to view details about all the records.</p>
+<div class="container mt-4">
+    <h1 class="text-center">Media Tracker - View List</h1>
+
+    @if (!Model.Any())
+    {
+        <p class="text-center mt-4">No media items added yet.</p>
+    }
+    else
+    {
+        <table class="table table-striped mt-4">
+            <thead>
+                <tr>
+                    <th>Class</th>
+                    <th>Title</th>
+                    <th>Year Finished</th>
+                    <th>Rating</th>
+                    <th>Review</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Class</td>
+                        <td>@item.Title</td>
+                        <td>@item.YearFinished</td>
+                        <td>@item.Rating ★</td>
+                        <td>@(string.IsNullOrEmpty(item.Review) ? "No Review" : item.Review)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
