@@ -7,6 +7,14 @@
 <div class="container mt-4">
     <h1 class="text-center">Media Tracker - View List</h1>
 
+    <!-- Success Message -->
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-success text-center" role="alert">
+            @TempData["Message"]
+        </div>
+    }
+
     @if (!Model.Any())
     {
         <p class="text-center mt-4">No media items added yet.</p>
@@ -18,6 +26,7 @@
                 <tr>
                     <th>Class</th>
                     <th>Title</th>
+                    <th>Season</th>
                     <th>Year Finished</th>
                     <th>Rating</th>
                     <th>Review</th>
@@ -29,9 +38,19 @@
                     <tr>
                         <td>@item.Class</td>
                         <td>@item.Title</td>
+                        <td>@(item.Class == "Show" ? item.Season?.ToString() ?? "N/A" : "N/A")</td> <!-- Display Season or N/A -->
                         <td>@item.YearFinished</td>
-                        <td>@item.Rating ★</td>
-                        <td>@(string.IsNullOrEmpty(item.Review) ? "No Review" : item.Review)</td>
+                        <td>
+                            @for (int i = 0; i < item.Rating; i++)
+                            {
+                                <span class="text-warning">★</span> <!-- Display stars in gold color -->
+                            }
+                            @for (int i = item.Rating; i < 5; i++)
+                            {
+                                <span class="text-secondary">★</span> <!-- Display empty stars in grey color -->
+                            }
+                        </td>
+                        <td>@(!string.IsNullOrEmpty(item.Review) ? item.Review : "No review provided.")</td>
                     </tr>
                 }
             </tbody>

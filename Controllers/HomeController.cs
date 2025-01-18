@@ -7,7 +7,7 @@ namespace AppDev.Controllers
 {
     public class HomeController : Controller
     {
-        private static string DataFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "MediaList.json");
+        private static string DataFilePath = "MediaList.json";
         private static List<MediaItem> MediaList = LoadMediaList();
 
         private static List<MediaItem> LoadMediaList()
@@ -26,32 +26,58 @@ namespace AppDev.Controllers
             System.IO.File.WriteAllText(DataFilePath, jsonData);
         }
 
+        // Default route: Redirect to About Us (Media Tracker Tab)
         public IActionResult Index()
         {
-            return View(); // Ensure this view exists in Views/Home
+            return RedirectToAction("AboutUs");
         }
 
+        // About Us Page (Media Tracker Tab)
+        public IActionResult AboutUs()
+        {
+            return View("AboutUs"); // Renders the About Us page
+        }
+
+        // Home Page (Add New Media Tab)
+        public IActionResult Home()
+        {
+            return View("Index"); // Displays the "Add New" form
+        }
+
+        // View List Page
         public IActionResult ViewList()
         {
-            return View(MediaList); // Pass the list to the View
+            return View(MediaList); // Displays the list of media items
         }
 
         [HttpPost]
-        public IActionResult AddNew(string Class, string InputTitle, int YearFinished, int Rating, string Review)
+        public IActionResult AddNew(string Class, string InputTitle, int YearFinished, int Rating, string Review, int? Season)
         {
+            if (Class != "Show")
+            {
+                Season = null; // Set Season to NULL if Class is not "Show"
+            }
+
             MediaList.Add(new MediaItem
             {
                 Class = Class,
                 Title = InputTitle,
                 YearFinished = YearFinished,
                 Rating = Rating,
-                Review = Review
+                Review = Review,
+                Season = Season
             });
 
-            SaveMediaList(); // Save the updated list to the file
+            SaveMediaList();
 
             TempData["Message"] = "New item added successfully!";
-            return RedirectToAction("Index");
+            return RedirectToAction("Home"); // Redirect to the Home tab
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }
