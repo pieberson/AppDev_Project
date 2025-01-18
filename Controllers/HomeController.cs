@@ -10,6 +10,7 @@ namespace AppDev.Controllers
         private static string DataFilePath = "MediaList.json";
         private static List<MediaItem> MediaList = LoadMediaList();
 
+        // Load MediaList from the file
         private static List<MediaItem> LoadMediaList()
         {
             if (System.IO.File.Exists(DataFilePath))
@@ -20,6 +21,7 @@ namespace AppDev.Controllers
             return new List<MediaItem>();
         }
 
+        // Save MediaList to the file
         private static void SaveMediaList()
         {
             var jsonData = JsonSerializer.Serialize(MediaList);
@@ -72,6 +74,12 @@ namespace AppDev.Controllers
 
             TempData["Message"] = "New item added successfully!";
             return RedirectToAction("Home"); // Redirect to the Home tab
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
