@@ -74,7 +74,7 @@ namespace AppDev.Controllers
             return View(sortedList);
         }
 
-
+        // Add New Media Item
         [HttpPost]
         public IActionResult AddNew(string Class, string InputTitle, int YearFinished, int Rating, string Review, int? Season)
         {
@@ -83,8 +83,12 @@ namespace AppDev.Controllers
                 Season = null; // Set Season to NULL if Class is not "Show"
             }
 
+            // Assign a unique Id to the new MediaItem
+            var newId = MediaList.Count > 0 ? MediaList.Max(m => m.Id) + 1 : 1;
+
             MediaList.Add(new MediaItem
             {
+                Id = newId, // Ensure unique ID for each item
                 Class = Class,
                 Title = InputTitle,
                 YearFinished = YearFinished,
@@ -99,6 +103,59 @@ namespace AppDev.Controllers
             return RedirectToAction("Home"); // Redirect to the Home tab
         }
 
+        // Edit Media Item: Display the Edit Form
+        public IActionResult Edit(int id)
+        {
+            var mediaItem = MediaList.FirstOrDefault(m => m.Id == id);
+            if (mediaItem == null)
+            {
+                return NotFound();
+            }
+            return View(mediaItem); // Pass the media item to the Edit view
+        }
+
+        // Edit Media Item: Update the Media Item after form submission
+        [HttpPost]
+        public IActionResult Edit(int id, string Class, string InputTitle, int YearFinished, int Rating, string Review, int? Season)
+        {
+            var mediaItem = MediaList.FirstOrDefault(m => m.Id == id);
+            if (mediaItem == null)
+            {
+                return NotFound();
+            }
+
+            // Update properties
+            mediaItem.Class = Class;
+            mediaItem.Title = InputTitle;
+            mediaItem.YearFinished = YearFinished;
+            mediaItem.Rating = Rating;
+            mediaItem.Review = Review;
+            mediaItem.Season = Class == "Show" ? Season : null; // Ensure Season is only updated if the Class is "Show"
+
+            SaveMediaList(); // Save the updated list to the file
+
+            TempData["Message"] = "Item updated successfully!";
+            return RedirectToAction("ViewList"); // Redirect to the ViewList page
+        }
+
+        // Delete Media Item: Remove a Media Item
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            var mediaItem = MediaList.FirstOrDefault(m => m.Id == id);
+            if (mediaItem == null)
+            {
+                return NotFound();
+            }
+
+            MediaList.Remove(mediaItem); // Remove the item from the list
+            SaveMediaList(); // Save the updated list to the file
+
+            TempData["Message"] = "Item deleted successfully!";
+            return RedirectToAction("ViewList"); // Redirect to the ViewList page
+        }
+
+        // Sort Media List (AJAX-based)
         [HttpGet]
         public IActionResult SortList(string sortBy)
         {

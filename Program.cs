@@ -14,7 +14,7 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseStaticFiles();
+app.UseStaticFiles();  // Serve static files (CSS, JS, images)
 
 app.UseRouting();
 

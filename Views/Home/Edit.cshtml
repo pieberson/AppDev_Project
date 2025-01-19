@@ -1,0 +1,92 @@
+﻿@model AppDev.Models.MediaItem
+
+@{
+    ViewData["Title"] = "Edit Media Item";
+}
+
+<div class="container mt-4 d-flex justify-content-center">
+    <div class="col-md-6">
+        <h1 class="text-center mb-4">Edit Media Item</h1>
+        @if (TempData["Message"] != null)
+        {
+            <div class="alert alert-success text-center" role="alert">
+                @TempData["Message"]
+            </div>
+        }
+
+        <form asp-controller="Home" asp-action="Edit" method="post">
+            <input type="hidden" name="id" value="@Model.Id" />
+
+            <div class="form-group mb-3">
+                <label for="Class">Class</label>
+                <select id="Class" name="Class" class="form-control" onchange="toggleSeasonField()" required>
+                    <option value="" disabled>Select Class</option>
+                    <option value="Movie" selected="@((Model.Class == "Movie") ? "selected" : null)">🎥 Movie</option>
+                    <option value="Show" selected="@((Model.Class == "Show") ? "selected" : null)">📺 Show</option>
+                    <option value="Book" selected="@((Model.Class == "Book") ? "selected" : null)">📚 Book</option>
+                </select>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="InputTitle">Input Title</label>
+                <input type="text" id="InputTitle" name="InputTitle" class="form-control" placeholder="Enter Title" value="@Model.Title" required />
+            </div>
+
+            <div class="form-group mb-3" id="SeasonField" style="@(Model.Class == "Show" ? "display: block;" : "display: none;")">
+                <label for="Season">Season</label>
+                <input type="number" id="Season" name="Season" class="form-control" value="@Model.Season" min="1" placeholder="Enter Season" />
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="YearFinished">Year Finished</label>
+                <select id="YearFinished" name="YearFinished" class="form-control" required>
+                    <option value="" disabled>Select Year</option>
+                    @for (int year = 2000; year <= DateTime.Now.Year; year++)
+                    {
+                        <option value="@year" selected="@((Model.YearFinished == year) ? "selected" : null)">@year</option>
+                    }
+                </select>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="Rating">Rating</label>
+                <div class="rating" id="Rating">
+                    <input type="radio" id="star5_@Model.Id" name="Rating" value="5" @(Model.Rating == 5 ? "checked" : "") />
+                    <label for="star5_@Model.Id" title="5 stars">★</label>
+                    <input type="radio" id="star4_@Model.Id" name="Rating" value="4" @(Model.Rating == 4 ? "checked" : "") />
+                    <label for="star4_@Model.Id" title="4 stars">★</label>
+                    <input type="radio" id="star3_@Model.Id" name="Rating" value="3" @(Model.Rating == 3 ? "checked" : "") />
+                    <label for="star3_@Model.Id" title="3 stars">★</label>
+                    <input type="radio" id="star2_@Model.Id" name="Rating" value="2" @(Model.Rating == 2 ? "checked" : "") />
+                    <label for="star2_@Model.Id" title="2 stars">★</label>
+                    <input type="radio" id="star1_@Model.Id" name="Rating" value="1" @(Model.Rating == 1 ? "checked" : "") />
+                    <label for="star1_@Model.Id" title="1 star">★</label>
+                </div>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="Review">Review (Optional)</label>
+                <textarea id="Review" name="Review" class="form-control" placeholder="Write your review here...">@Model.Review</textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 mt-4">Save Changes</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function toggleSeasonField() {
+        const classField = document.getElementById("Class").value;
+        const seasonField = document.getElementById("SeasonField");
+        if (classField === "Show") {
+            seasonField.style.display = "block";
+        } else {
+            seasonField.style.display = "none";
+        }
+    }
+
+    // Ensure the season field is properly displayed based on the initial class value
+    document.addEventListener("DOMContentLoaded", function () {
+        toggleSeasonField();
+    });
+</script>

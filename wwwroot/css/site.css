@@ -1,3 +1,4 @@
+/* Font sizing based on screen size */
 html {
     font-size: 14px;
 }
@@ -8,10 +9,12 @@ html {
     }
 }
 
+/* Focus styles for form elements and buttons */
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
     box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
+/* Ensuring minimum height */
 html {
     position: relative;
     min-height: 100%;
@@ -19,6 +22,9 @@ html {
 
 body {
     margin-bottom: 60px;
+    background-color: #E4E0E1; /* Soft light background */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #493628; /* Dark text color */
 }
 
 /* Star Rating Styles */
@@ -47,3 +53,112 @@ body {
     .rating label:hover ~ label {
         color: #ffc107;
     }
+
+/* Navbar styling */
+.navbar {
+    background-color: #493628; /* Dark brown navbar */
+    border-bottom: 2px solid #AB886D; /* Light accent border */
+}
+
+    .navbar .navbar-brand {
+        color: #D6C0B3; /* Beige brand name */
+        font-weight: 600;
+    }
+
+    .navbar .navbar-nav .nav-link {
+        color: #E4E0E1; /* Light text color for links */
+        font-weight: 500;
+    }
+
+        .navbar .navbar-nav .nav-link:hover {
+            color: #D6C0B3; /* Hover effect with beige */
+        }
+
+.navbar-toggler-icon {
+    background-color: #D6C0B3; /* Make hamburger icon match the color */
+}
+
+/* Outer container background color */
+.container {
+    background-color: #D6C0B3; /* Set background color to #D6C0B3 */
+    padding: 30px;
+    border-radius: 10px; /* Rounded corners */
+}
+
+/* Button Styling */
+.btn-primary {
+    background-color: #AB886D; /* Earthy accent color for buttons */
+    border-color: #AB886D;
+    font-weight: 600;
+}
+
+    .btn-primary:hover {
+        background-color: #D6C0B3; /* Light beige on hover */
+        border-color: #D6C0B3;
+    }
+
+/* Footer Styles */
+.footer {
+    background-color: #493628; /* Dark footer background */
+    color: #E4E0E1; /* Light text in footer */
+    padding: 20px 0;
+    text-align: center;
+}
+
+    .footer a {
+        color: #AB886D; /* Accent color for links in footer */
+        font-weight: 500;
+    }
+
+        .footer a:hover {
+            color: #D6C0B3; /* Light beige hover effect */
+        }
+
+/* Card Styles */
+.card {
+    display: block; /* Ensure cards are visible */
+    background-color: #FFFFFF; /* White background */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Initial shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    border: 2px solid transparent; /* Subtle border */
+}
+
+    .card:hover {
+        transform: scale(1.05); /* Slight zoom effect on hover */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+        border-color: #AAB99A; /* Accent border color on hover */
+    }
+
+/* Card Header and Footer */
+.card-header, .card-footer {
+    background-color: #AAB99A; /* Light green header/footer background */
+    color: #727D73; /* Neutral text color */
+    font-weight: 600;
+}
+
+/* Card Title */
+.card-title {
+    color: #727D73; /* Neutral text color for titles */
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+/* Customizing Form Elements */
+.form-control {
+    border-radius: 5px;
+    border-color: #AB886D; /* Accent border color */
+    box-shadow: none;
+}
+
+    .form-control:focus {
+        border-color: #493628; /* Dark brown on focus */
+        box-shadow: 0 0 5px rgba(73, 54, 40, 0.3);
+    }
+
+/* Modern button style */
+.btn {
+    border-radius: 25px;
+    padding: 10px 20px;
+}

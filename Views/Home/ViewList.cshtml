@@ -6,7 +6,7 @@
 }
 
 <div class="container mt-4">
-    <h1 class="text-center">TRACKXD</h1>
+    <h1 class="text-center" style="color: #727D73;">TRACKXD</h1>
 
     <!-- Success Message -->
     @if (TempData["Message"] != null)
@@ -19,7 +19,7 @@
     <!-- Sorting Dropdown -->
     <div class="mb-3 text-center">
         <form method="get" asp-action="ViewList">
-            <label for="sortBy" class="form-label">Sort By:</label>
+            <label for="sortBy" class="form-label" style="color: #727D73;">Sort By:</label>
             <select id="sortBy" name="sortBy" class="form-select w-auto d-inline-block">
                 <option value="Default" selected="@((currentSort == "Default") ? "selected" : null)">Default</option>
                 <option value="Year" selected="@((currentSort == "Year") ? "selected" : null)">Year Finished</option>
@@ -27,18 +27,18 @@
                 <option value="Title" selected="@((currentSort == "Title") ? "selected" : null)">Title</option>
                 <option value="Class" selected="@((currentSort == "Class") ? "selected" : null)">Class</option>
             </select>
-            <button type="submit" class="btn btn-primary">Sort</button>
+            <button type="submit" class="btn btn-primary" style="background-color: #727D73; border-color: #727D73;">Sort</button>
         </form>
     </div>
 
     @if (!Model.Any())
     {
-        <p class="text-center mt-4">No media items added yet.</p>
+        <p class="text-center mt-4" style="color: #727D73;">No media items added yet.</p>
     }
     else
     {
-        <table class="table table-striped">
-            <thead>
+        <table class="table table-striped" style="background-color: #FFFFFF; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+            <thead class="thead-light" style="background-color: #727D73; color: #FFFFFF;">
                 <tr>
                     <th>Class</th>
                     <th>Title</th>
@@ -46,6 +46,7 @@
                     <th>Year Finished</th>
                     <th>Rating</th>
                     <th>Review</th>
+                    <th>Actions</th> <!-- New column for Edit and Delete buttons -->
                 </tr>
             </thead>
             <tbody>
@@ -80,6 +81,15 @@
                             }
                         </td>
                         <td>@(!string.IsNullOrEmpty(item.Review) ? item.Review : "No review provided.")</td>
+                        <td>
+                            <!-- Edit button -->
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Edit</a>
+
+                            <!-- Delete button inside form -->
+                            <form asp-action="Delete" asp-route-id="@item.Id" method="post" class="d-inline">
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this item?');">Delete</button>
+                            </form>
+                        </td>
                     </tr>
                 }
             </tbody>
