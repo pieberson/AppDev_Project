@@ -1,11 +1,12 @@
 @model List<AppDev.Models.MediaItem>
 
 @{
-    ViewData["Title"] = "View List";
+    ViewData["Title"] = "TRACKXD";
+    string currentSort = ViewData["CurrentSort"]?.ToString() ?? "Default"; // Get the current sort value
 }
 
 <div class="container mt-4">
-    <h1 class="text-center">Media Tracker - View List</h1>
+    <h1 class="text-center">TRACKXD</h1>
 
     <!-- Success Message -->
     @if (TempData["Message"] != null)
@@ -14,6 +15,21 @@
             @TempData["Message"]
         </div>
     }
+
+    <!-- Sorting Dropdown -->
+    <div class="mb-3 text-center">
+        <form method="get" asp-action="ViewList">
+            <label for="sortBy" class="form-label">Sort By:</label>
+            <select id="sortBy" name="sortBy" class="form-select w-auto d-inline-block">
+                <option value="Default" selected="@((currentSort == "Default") ? "selected" : null)">Default</option>
+                <option value="Year" selected="@((currentSort == "Year") ? "selected" : null)">Year Finished</option>
+                <option value="Rating" selected="@((currentSort == "Rating") ? "selected" : null)">Rating</option>
+                <option value="Title" selected="@((currentSort == "Title") ? "selected" : null)">Title</option>
+                <option value="Class" selected="@((currentSort == "Class") ? "selected" : null)">Class</option>
+            </select>
+            <button type="submit" class="btn btn-primary">Sort</button>
+        </form>
+    </div>
 
     @if (!Model.Any())
     {
@@ -36,18 +52,31 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>@item.Class</td>
+                        <td>
+                            @if (item.Class == "Movie")
+                            {
+                                @:🎥&nbsp;Movie
+                            }
+                            else if (item.Class == "Show")
+                            {
+                                @:📺&nbsp;Show
+                            }
+                            else if (item.Class == "Book")
+                            {
+                                @:📚&nbsp;Book
+                            }
+                        </td>
                         <td>@item.Title</td>
-                        <td>@(item.Class == "Show" ? item.Season?.ToString() ?? "N/A" : "N/A")</td> <!-- Display Season or N/A -->
+                        <td>@(item.Class == "Show" ? item.Season?.ToString() ?? "N/A" : "N/A")</td>
                         <td>@item.YearFinished</td>
                         <td>
                             @for (int i = 0; i < item.Rating; i++)
                             {
-                                <span class="text-warning">★</span> <!-- Display stars in gold color -->
+                                <span class="text-warning">★</span>
                             }
                             @for (int i = item.Rating; i < 5; i++)
                             {
-                                <span class="text-secondary">★</span> <!-- Display empty stars in grey color -->
+                                <span class="text-secondary">★</span>
                             }
                         </td>
                         <td>@(!string.IsNullOrEmpty(item.Review) ? item.Review : "No review provided.")</td>

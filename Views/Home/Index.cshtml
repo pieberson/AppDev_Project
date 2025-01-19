@@ -4,7 +4,6 @@
 
 <div class="container mt-4 d-flex justify-content-center">
     <div class="col-md-6">
-        <!-- Restrict width to a responsive column -->
         <h1 class="text-center">Add New</h1>
         @if (TempData["Message"] != null)
         {
@@ -13,27 +12,24 @@
             </div>
         }
 
-        <form method="post" action="/Home/AddNew">
+        <form asp-controller="Home" asp-action="AddNew" method="post">
             <div class="form-group mb-3">
                 <label for="Class">Class</label>
                 <select id="Class" name="Class" class="form-control" onchange="toggleSeasonField()" required>
                     <option value="" disabled selected>Select Class</option>
-                    <option value="Movie">Movie</option>
-                    <option value="Show">Show</option>
-                    <option value="Book">Book</option>
+                    <option value="Movie">🎥 Movie</option>
+                    <option value="Show">📺 Show</option>
+                    <option value="Book">📚 Book</option>
                 </select>
             </div>
             <div class="form-group mb-3">
                 <label for="InputTitle">Input Title</label>
                 <input type="text" id="InputTitle" name="InputTitle" class="form-control" placeholder="Enter Title" required />
             </div>
-
-            <!-- Season Field (Hidden initially) -->
             <div class="form-group mb-3" id="SeasonField" style="display: none;">
                 <label for="Season">Season</label>
                 <input type="number" id="Season" name="Season" class="form-control" placeholder="Enter Season" min="1" />
             </div>
-
             <div class="form-group mb-3">
                 <label for="YearFinished">Year Finished</label>
                 <select id="YearFinished" name="YearFinished" class="form-control" required>

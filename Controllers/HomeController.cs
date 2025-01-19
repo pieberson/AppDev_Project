@@ -47,10 +47,33 @@ namespace AppDev.Controllers
         }
 
         // View List Page
-        public IActionResult ViewList()
+        public IActionResult ViewList(string sortBy)
         {
-            return View(MediaList); // Displays the list of media items
+            List<MediaItem> sortedList;
+
+            switch (sortBy)
+            {
+                case "Year":
+                    sortedList = MediaList.OrderBy(m => m.YearFinished).ToList();
+                    break;
+                case "Rating":
+                    sortedList = MediaList.OrderByDescending(m => m.Rating).ToList();
+                    break;
+                case "Title":
+                    sortedList = MediaList.OrderBy(m => m.Title).ToList();
+                    break;
+                case "Class":
+                    sortedList = MediaList.OrderBy(m => m.Class).ToList();
+                    break;
+                default:
+                    sortedList = MediaList; // Default order
+                    break;
+            }
+
+            ViewData["CurrentSort"] = sortBy; // Pass the current sort value to the view
+            return View(sortedList);
         }
+
 
         [HttpPost]
         public IActionResult AddNew(string Class, string InputTitle, int YearFinished, int Rating, string Review, int? Season)
@@ -74,6 +97,22 @@ namespace AppDev.Controllers
 
             TempData["Message"] = "New item added successfully!";
             return RedirectToAction("Home"); // Redirect to the Home tab
+        }
+
+        [HttpGet]
+        public IActionResult SortList(string sortBy)
+        {
+            if (string.IsNullOrEmpty(sortBy)) return BadRequest("Sort parameter is missing.");
+
+            List<MediaItem> sortedList = sortBy switch
+            {
+                "Title" => MediaList.OrderBy(item => item.Title).ToList(),
+                "YearFinished" => MediaList.OrderBy(item => item.YearFinished).ToList(),
+                "Rating" => MediaList.OrderByDescending(item => item.Rating).ToList(),
+                _ => MediaList
+            };
+
+            return Json(sortedList);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

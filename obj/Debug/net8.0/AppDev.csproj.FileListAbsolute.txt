@@ -28,15 +28,6 @@ C:\Users\bryll\source\repos\AppDev\obj\Debug\net8.0\refint\AppDev.dll
 C:\Users\bryll\source\repos\AppDev\obj\Debug\net8.0\AppDev.pdb
 C:\Users\bryll\source\repos\AppDev\obj\Debug\net8.0\AppDev.genruntimeconfig.cache
 C:\Users\bryll\source\repos\AppDev\obj\Debug\net8.0\ref\AppDev.dll
-C:\Users\ADMIN\Source\Repos\AppDev_Project\bin\Debug\net8.0\appsettings.Development.json
-C:\Users\ADMIN\Source\Repos\AppDev_Project\bin\Debug\net8.0\appsettings.json
-C:\Users\ADMIN\Source\Repos\AppDev_Project\bin\Debug\net8.0\AppDev.staticwebassets.runtime.json
-C:\Users\ADMIN\Source\Repos\AppDev_Project\bin\Debug\net8.0\AppDev.staticwebassets.endpoints.json
-C:\Users\ADMIN\Source\Repos\AppDev_Project\bin\Debug\net8.0\AppDev.exe
-C:\Users\ADMIN\Source\Repos\AppDev_Project\bin\Debug\net8.0\AppDev.deps.json
-C:\Users\ADMIN\Source\Repos\AppDev_Project\bin\Debug\net8.0\AppDev.runtimeconfig.json
-C:\Users\ADMIN\Source\Repos\AppDev_Project\bin\Debug\net8.0\AppDev.dll
-C:\Users\ADMIN\Source\Repos\AppDev_Project\bin\Debug\net8.0\AppDev.pdb
 C:\Users\ADMIN\Source\Repos\AppDev_Project\obj\Debug\net8.0\AppDev.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\ADMIN\Source\Repos\AppDev_Project\obj\Debug\net8.0\AppDev.AssemblyInfoInputs.cache
 C:\Users\ADMIN\Source\Repos\AppDev_Project\obj\Debug\net8.0\AppDev.AssemblyInfo.cs
@@ -45,6 +36,16 @@ C:\Users\ADMIN\Source\Repos\AppDev_Project\obj\Debug\net8.0\AppDev.MvcApplicatio
 C:\Users\ADMIN\Source\Repos\AppDev_Project\obj\Debug\net8.0\AppDev.RazorAssemblyInfo.cache
 C:\Users\ADMIN\Source\Repos\AppDev_Project\obj\Debug\net8.0\AppDev.RazorAssemblyInfo.cs
 C:\Users\ADMIN\Source\Repos\AppDev_Project\obj\Debug\net8.0\AppDev.sourcelink.json
+C:\Users\ADMIN\Source\Repos\AppDev_Project\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\ADMIN\Source\Repos\AppDev_Project\bin\Debug\net8.0\appsettings.json
+C:\Users\ADMIN\Source\Repos\AppDev_Project\bin\Debug\net8.0\MediaList.json
+C:\Users\ADMIN\Source\Repos\AppDev_Project\bin\Debug\net8.0\AppDev.staticwebassets.runtime.json
+C:\Users\ADMIN\Source\Repos\AppDev_Project\bin\Debug\net8.0\AppDev.staticwebassets.endpoints.json
+C:\Users\ADMIN\Source\Repos\AppDev_Project\bin\Debug\net8.0\AppDev.exe
+C:\Users\ADMIN\Source\Repos\AppDev_Project\bin\Debug\net8.0\AppDev.deps.json
+C:\Users\ADMIN\Source\Repos\AppDev_Project\bin\Debug\net8.0\AppDev.runtimeconfig.json
+C:\Users\ADMIN\Source\Repos\AppDev_Project\bin\Debug\net8.0\AppDev.dll
+C:\Users\ADMIN\Source\Repos\AppDev_Project\bin\Debug\net8.0\AppDev.pdb
 C:\Users\ADMIN\Source\Repos\AppDev_Project\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\ADMIN\Source\Repos\AppDev_Project\obj\Debug\net8.0\scopedcss\bundle\AppDev.styles.css
 C:\Users\ADMIN\Source\Repos\AppDev_Project\obj\Debug\net8.0\scopedcss\projectbundle\AppDev.bundle.scp.css
@@ -63,4 +64,3 @@ C:\Users\ADMIN\Source\Repos\AppDev_Project\obj\Debug\net8.0\refint\AppDev.dll
 C:\Users\ADMIN\Source\Repos\AppDev_Project\obj\Debug\net8.0\AppDev.pdb
 C:\Users\ADMIN\Source\Repos\AppDev_Project\obj\Debug\net8.0\AppDev.genruntimeconfig.cache
 C:\Users\ADMIN\Source\Repos\AppDev_Project\obj\Debug\net8.0\ref\AppDev.dll
-C:\Users\ADMIN\Source\Repos\AppDev_Project\bin\Debug\net8.0\MediaList.json
