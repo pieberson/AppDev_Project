@@ -80,66 +80,65 @@ body {
 
 /* Outer container background color */
 .container {
-    background-color: #D6C0B3; /* Set background color to #D6C0B3 */
+    background-color: #D6C0B3; 
     padding: 30px;
-    border-radius: 10px; /* Rounded corners */
-}
+    border-radius: 10px; 
 
 /* Button Styling */
 .btn-primary {
-    background-color: #AB886D; /* Earthy accent color for buttons */
+    background-color: #AB886D; 
     border-color: #AB886D;
     font-weight: 600;
 }
 
     .btn-primary:hover {
-        background-color: #D6C0B3; /* Light beige on hover */
+        background-color: #D6C0B3; 
         border-color: #D6C0B3;
     }
 
 /* Footer Styles */
 .footer {
-    background-color: #493628; /* Dark footer background */
-    color: #E4E0E1; /* Light text in footer */
+    background-color: #493628; 
+    color: #E4E0E1; 
     padding: 20px 0;
     text-align: center;
 }
 
     .footer a {
-        color: #AB886D; /* Accent color for links in footer */
+        color: #AB886D; 
         font-weight: 500;
     }
 
         .footer a:hover {
-            color: #D6C0B3; /* Light beige hover effect */
+            color: #D6C0B3; 
         }
 
 /* Card Styles */
 .card {
-    display: block; /* Ensure cards are visible */
-    background-color: #FFFFFF; /* White background */
+    display: block; 
+    background-color: #FFFFFF; 
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Initial shadow */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    border: 2px solid transparent; /* Subtle border */
+    border: 2px solid transparent; 
 }
 
     .card:hover {
-        transform: scale(1.05); /* Slight zoom effect on hover */
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
-        border-color: #AAB99A; /* Accent border color on hover */
+        transform: scale(1.05); 
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+        border-color: #AAB99A; 
     }
 
 /* Card Header and Footer */
 .card-header, .card-footer {
-    background-color: #AAB99A; /* Light green header/footer background */
-    color: #727D73; /* Neutral text color */
+    background-color: #AAB99A; 
+    color: #727D73; 
     font-weight: 600;
 }
 
 /* Card Title */
 .card-title {
-    color: #727D73; /* Neutral text color for titles */
+    color: #727D73; 
     font-size: 1.25rem;
     font-weight: 700;
     margin-bottom: 15px;
@@ -148,12 +147,12 @@ body {
 /* Customizing Form Elements */
 .form-control {
     border-radius: 5px;
-    border-color: #AB886D; /* Accent border color */
+    border-color: #AB886D; 
     box-shadow: none;
 }
 
     .form-control:focus {
-        border-color: #493628; /* Dark brown on focus */
+        border-color: #493628; 
         box-shadow: 0 0 5px rgba(73, 54, 40, 0.3);
     }
 
