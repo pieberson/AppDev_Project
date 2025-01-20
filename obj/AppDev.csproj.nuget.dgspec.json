@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\bryll\\source\\repos\\AppDev\\AppDev.csproj": {}
+    "C:\\Users\\ADMIN\\Source\\Repos\\AppDev_Project\\AppDev.csproj": {}
   },
   "projects": {
-    "C:\\Users\\bryll\\source\\repos\\AppDev\\AppDev.csproj": {
+    "C:\\Users\\ADMIN\\Source\\Repos\\AppDev_Project\\AppDev.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bryll\\source\\repos\\AppDev\\AppDev.csproj",
+        "projectUniqueName": "C:\\Users\\ADMIN\\Source\\Repos\\AppDev_Project\\AppDev.csproj",
         "projectName": "AppDev",
-        "projectPath": "C:\\Users\\bryll\\source\\repos\\AppDev\\AppDev.csproj",
-        "packagesPath": "C:\\Users\\bryll\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bryll\\source\\repos\\AppDev\\obj\\",
+        "projectPath": "C:\\Users\\ADMIN\\Source\\Repos\\AppDev_Project\\AppDev.csproj",
+        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ADMIN\\Source\\Repos\\AppDev_Project\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\bryll\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -39,7 +43,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -63,7 +68,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

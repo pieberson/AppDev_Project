@@ -1,22 +1,163 @@
+/* Font sizing based on screen size */
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
+/* Focus styles for form elements and buttons */
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
+/* Ensuring minimum height */
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: #E4E0E1; /* Soft light background */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #493628; /* Dark text color */
+}
+
+/* Star Rating Styles */
+.rating {
+    direction: rtl;
+    display: inline-flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+    .rating input {
+        display: none;
+    }
+
+    .rating label {
+        font-size: 2rem;
+        color: #ddd;
+        cursor: pointer;
+    }
+
+    .rating input:checked ~ label {
+        color: #ffc107;
+    }
+
+    .rating label:hover,
+    .rating label:hover ~ label {
+        color: #ffc107;
+    }
+
+/* Navbar styling */
+.navbar {
+    background-color: #493628; /* Dark brown navbar */
+    border-bottom: 2px solid #AB886D; /* Light accent border */
+}
+
+    .navbar .navbar-brand {
+        color: #D6C0B3; /* Beige brand name */
+        font-weight: 600;
+    }
+
+    .navbar .navbar-nav .nav-link {
+        color: #E4E0E1; /* Light text color for links */
+        font-weight: 500;
+    }
+
+        .navbar .navbar-nav .nav-link:hover {
+            color: #D6C0B3; /* Hover effect with beige */
+        }
+
+.navbar-toggler-icon {
+    background-color: #D6C0B3; /* Make hamburger icon match the color */
+}
+
+/* Outer container background color */
+.container {
+    background-color: #D6C0B3; 
+    padding: 30px;
+    border-radius: 10px; 
+
+/* Button Styling */
+.btn-primary {
+    background-color: #AB886D; 
+    border-color: #AB886D;
+    font-weight: 600;
+}
+
+    .btn-primary:hover {
+        background-color: #D6C0B3; 
+        border-color: #D6C0B3;
+    }
+
+/* Footer Styles */
+.footer {
+    background-color: #493628; 
+    color: #E4E0E1; 
+    padding: 20px 0;
+    text-align: center;
+}
+
+    .footer a {
+        color: #AB886D; 
+        font-weight: 500;
+    }
+
+        .footer a:hover {
+            color: #D6C0B3; 
+        }
+
+/* Card Styles */
+.card {
+    display: block; 
+    background-color: #FFFFFF; 
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    border: 2px solid transparent; 
+}
+
+    .card:hover {
+        transform: scale(1.05); 
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+        border-color: #AAB99A; 
+    }
+
+/* Card Header and Footer */
+.card-header, .card-footer {
+    background-color: #AAB99A; 
+    color: #727D73; 
+    font-weight: 600;
+}
+
+/* Card Title */
+.card-title {
+    color: #727D73; 
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+/* Customizing Form Elements */
+.form-control {
+    border-radius: 5px;
+    border-color: #AB886D; 
+    box-shadow: none;
+}
+
+    .form-control:focus {
+        border-color: #493628; 
+        box-shadow: 0 0 5px rgba(73, 54, 40, 0.3);
+    }
+
+/* Modern button style */
+.btn {
+    border-radius: 25px;
+    padding: 10px 20px;
 }
