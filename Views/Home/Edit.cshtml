@@ -6,7 +6,13 @@
 
 <div class="container mt-4 d-flex justify-content-center">
     <div class="col-md-6">
+        <!-- Back Button -->
+        <div class="mb-3">
+            <a href="/Home/ViewList" class="btn btn-secondary">Back</a>
+        </div>
+
         <h1 class="text-center mb-4">Edit Media Item</h1>
+
         @if (TempData["Message"] != null)
         {
             <div class="alert alert-success text-center" role="alert">
@@ -17,6 +23,7 @@
         <form asp-controller="Home" asp-action="Edit" method="post">
             <input type="hidden" name="id" value="@Model.Id" />
 
+            <!-- Class Field -->
             <div class="form-group mb-3">
                 <label for="Class">Class</label>
                 <select id="Class" name="Class" class="form-control" onchange="toggleSeasonField()" required>
@@ -27,16 +34,19 @@
                 </select>
             </div>
 
+            <!-- Title Field -->
             <div class="form-group mb-3">
                 <label for="InputTitle">Input Title</label>
                 <input type="text" id="InputTitle" name="InputTitle" class="form-control" placeholder="Enter Title" value="@Model.Title" required />
             </div>
 
+            <!-- Conditional Season Field (Only for Shows) -->
             <div class="form-group mb-3" id="SeasonField" style="@(Model.Class == "Show" ? "display: block;" : "display: none;")">
                 <label for="Season">Season</label>
                 <input type="number" id="Season" name="Season" class="form-control" value="@Model.Season" min="1" placeholder="Enter Season" />
             </div>
 
+            <!-- Year Finished Field -->
             <div class="form-group mb-3">
                 <label for="YearFinished">Year Finished</label>
                 <select id="YearFinished" name="YearFinished" class="form-control" required>
@@ -48,6 +58,7 @@
                 </select>
             </div>
 
+            <!-- Rating Field (Star Rating) -->
             <div class="form-group mb-3">
                 <label for="Rating">Rating</label>
                 <div class="rating" id="Rating">
@@ -64,16 +75,19 @@
                 </div>
             </div>
 
+            <!-- Review Field -->
             <div class="form-group mb-3">
                 <label for="Review">Review (Optional)</label>
                 <textarea id="Review" name="Review" class="form-control" placeholder="Write your review here...">@Model.Review</textarea>
             </div>
 
+            <!-- Submit Button -->
             <button type="submit" class="btn btn-primary w-100 mt-4">Save Changes</button>
         </form>
     </div>
 </div>
 
+<!-- JavaScript to handle showing/hiding the Season field based on class selection -->
 <script>
     function toggleSeasonField() {
         const classField = document.getElementById("Class").value;

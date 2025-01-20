@@ -16,7 +16,16 @@ namespace AppDev.Controllers
             if (System.IO.File.Exists(DataFilePath))
             {
                 var jsonData = System.IO.File.ReadAllText(DataFilePath);
-                return JsonSerializer.Deserialize<List<MediaItem>>(jsonData) ?? new List<MediaItem>();
+                var mediaList = JsonSerializer.Deserialize<List<MediaItem>>(jsonData) ?? new List<MediaItem>();
+
+                // Ensure unique IDs for items with duplicate or zero IDs
+                int idCounter = 1;
+                foreach (var item in mediaList)
+                {
+                    item.Id = idCounter++;
+                }
+
+                return mediaList;
             }
             return new List<MediaItem>();
         }
@@ -103,18 +112,18 @@ namespace AppDev.Controllers
             return RedirectToAction("Home"); // Redirect to the Home tab
         }
 
-        // Edit Media Item: Display the Edit Form
+        // Edit Media Item: Display the Edit Form (GET)
         public IActionResult Edit(int id)
         {
             var mediaItem = MediaList.FirstOrDefault(m => m.Id == id);
             if (mediaItem == null)
             {
-                return NotFound();
+                return NotFound(); // Handle case where the item doesn't exist
             }
             return View(mediaItem); // Pass the media item to the Edit view
         }
 
-        // Edit Media Item: Update the Media Item after form submission
+        // Edit Media Item: Update the Media Item after form submission (POST)
         [HttpPost]
         public IActionResult Edit(int id, string Class, string InputTitle, int YearFinished, int Rating, string Review, int? Season)
         {
@@ -124,18 +133,18 @@ namespace AppDev.Controllers
                 return NotFound();
             }
 
-            // Update properties
+            // Update the media item with the new data
             mediaItem.Class = Class;
             mediaItem.Title = InputTitle;
             mediaItem.YearFinished = YearFinished;
             mediaItem.Rating = Rating;
             mediaItem.Review = Review;
-            mediaItem.Season = Class == "Show" ? Season : null; // Ensure Season is only updated if the Class is "Show"
+            mediaItem.Season = Class == "Show" ? Season : null; // Only update Season for "Show" items
 
             SaveMediaList(); // Save the updated list to the file
 
             TempData["Message"] = "Item updated successfully!";
-            return RedirectToAction("ViewList"); // Redirect to the ViewList page
+            return RedirectToAction("ViewList"); // Redirect to the ViewList page after update
         }
 
         // Delete Media Item: Remove a Media Item

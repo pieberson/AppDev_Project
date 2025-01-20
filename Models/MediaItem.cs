@@ -4,26 +4,40 @@ namespace AppDev.Models
 {
     public class MediaItem
     {
-        public int Id { get; set; }             // Unique identifier for each media item
+        // Unique identifier for each media item
+        public int Id { get; set; }
 
-        [Required]
-        public string Class { get; set; }       // Media type: Movie, Show, or Book
+        // Media type: Movie, Show, or Book
+        [Required(ErrorMessage = "Please select the class of the media.")]
+        [Display(Name = "Media Type")]
+        public string Class { get; set; }
 
-        [Required]
+        // Title of the media (required and with validation for length)
+        [Required(ErrorMessage = "Title is required.")]
         [StringLength(100, ErrorMessage = "Title cannot exceed 100 characters.")]
-        public string Title { get; set; }       // Title of the media
+        [Display(Name = "Media Title")]
+        public string Title { get; set; }
 
-        [Range(1900, 2100, ErrorMessage = "YearFinished must be between 1900 and 2100.")]
-        public int YearFinished { get; set; }   // Year the media was completed
+        // Year the media was completed
+        [Range(1900, 2100, ErrorMessage = "Year Finished must be between 1900 and 2100.")]
+        [Display(Name = "Year Finished")]
+        public int YearFinished { get; set; }
 
+        // Rating given by the user (1-5 stars)
         [Range(1, 5, ErrorMessage = "Rating must be between 1 and 5.")]
-        public int Rating { get; set; }         // Rating given by the user (1-5 stars)
+        [Display(Name = "Rating (1-5 Stars)")]
+        public int Rating { get; set; }
 
-        public string Review { get; set; }      // Optional review
+        // Optional review text
+        [Display(Name = "Review (Optional)")]
+        public string Review { get; set; }
 
+        // Ensure that Season is only entered for Shows (nullable for Movies and Books)
         [Range(1, int.MaxValue, ErrorMessage = "Season must be a positive number.")]
-        public int? Season { get; set; }        // Season number (nullable for Movies and Books)
+        [Display(Name = "Season Number")]
+        public int? Season { get; set; }
 
+        // Custom ToString method for better display in lists or logs
         public override string ToString()
         {
             return $"{Title} ({Class}, {YearFinished}) - {Rating} Stars";
