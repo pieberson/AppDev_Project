@@ -6,130 +6,168 @@
     <title>@ViewData["Title"] - Trackxd</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
     <style>
-     
+        /* Light mode color scheme */
+        :root {
+            --primary-color: #1a1a1a; /* Dark gray for text and accents */
+            --secondary-color: #ff5a5f; /* Coral for buttons and highlights */
+            --background-color: #f8f9fa; /* Light gray for background */
+            --card-background: #ffffff; /* White for cards */
+            --border-color: #e0e0e0; /* Light gray for borders */
+            --hover-color: #ff7e82; /* Lighter coral for hover effects */
+        }
+
+        /* Dark mode color scheme */
+        [data-theme="dark"] {
+            --primary-color: #ffffff; /* White for text and accents */
+            --secondary-color: #ff5a5f; /* Coral for buttons and highlights */
+            --background-color: #243642; /* Deep blue-gray for background */
+            --card-background: #2F4252; /* Slightly lighter blue-gray for cards */
+            --border-color: #1C2A36; /* Darker blue-gray for borders */
+            --hover-color: #ff7e82; /* Lighter coral for hover effects */
+        }
+
         body {
-            background-color: #F0F0D7; 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #727D73; 
+            background-color: var(--background-color);
+            font-family: 'Inter', sans-serif;
+            color: var(--primary-color);
             line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
+        /* Navbar styling */
         .navbar {
-            background-color: #727D73;
-            border-bottom: 2px solid #AAB99A; 
+            background-color: var(--card-background);
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-            .navbar .navbar-brand {
-                color: #D0DDD0; 
-                font-weight: 600;
-            }
-
-            .navbar .navbar-nav .nav-link {
-                color: #F0F0D7; 
-                font-weight: 500;
-            }
-
-                .navbar .navbar-nav .nav-link:hover {
-                    color: #D0DDD0; 
-                }
-
-        .navbar-toggler-icon {
-            background-color: #D0DDD0; 
+        .navbar-brand {
+            color: var(--primary-color) !important;
+            font-weight: 700;
+            font-size: 1.5rem;
         }
 
-       
+        .navbar-nav .nav-link {
+            color: var(--primary-color) !important;
+            font-weight: 500;
+            margin: 0 10px;
+        }
+
+            .navbar-nav .nav-link:hover {
+                color: var(--secondary-color) !important;
+            }
+
+        /* Container styling */
         .container {
-            background-color: #D0DDD0; 
-            border-radius: 10px;
+            background-color: var(--card-background);
+            border-radius: 12px;
             padding: 30px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
+            margin-top: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            flex: 1;
         }
 
-        /* Card Styles */
+        /* Card styling */
         .card {
-            background-color: #FFFFFF;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-            border: 2px solid transparent;
+            background-color: var(--card-background);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
             .card:hover {
-                transform: scale(1.05); 
-                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); 
-                border-color: #AAB99A; 
+                transform: translateY(-5px);
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
             }
 
-        .card-header, .card-footer {
-            background-color: #AAB99A; 
-            color: #727D73;
+        .card-header {
+            background-color: var(--card-background);
+            border-bottom: 1px solid var(--border-color);
+            font-weight: 600;
+            color: var(--primary-color);
         }
 
         .card-title {
-            color: #727D73;
+            color: var(--primary-color);
+            font-size: 1.25rem;
+            font-weight: 700;
         }
 
-        /* Button Styles */
+        /* Button styling */
         .btn-primary {
-            background-color: #AAB99A;
-            border-color: #AAB99A;
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
             font-weight: 600;
-        }
-
-            .btn-primary:hover {
-                background-color: #D0DDD0;
-                border-color: #D0DDD0;
-            }
-
-        .btn {
             border-radius: 25px;
             padding: 10px 20px;
         }
 
-        /* Footer Styles */
+            .btn-primary:hover {
+                background-color: var(--hover-color);
+                border-color: var(--hover-color);
+            }
+
+        /* Footer styling */
         .footer {
-            background-color: #F0F0D7; 
-            color: #727D73; 
+            background-color: transparent; /* Transparent background */
+            color: var(--primary-color);
             padding: 20px 0;
             text-align: center;
+            margin-top: auto; /* Push footer to the bottom */
+            font-size: 0.9rem;
+            opacity: 0.8; /* Slightly transparent text */
         }
 
             .footer a {
-                color: #AAB99A; 
+                color: var(--secondary-color);
                 font-weight: 500;
+                text-decoration: none;
             }
 
                 .footer a:hover {
-                    color: #D0DDD0; 
+                    color: var(--hover-color);
+                    text-decoration: underline;
                 }
-        /* Form Control Styles */
-        .form-control {
-            border-radius: 5px;
-            border-color: #AAB99A;
-            box-shadow: none;
+
+        /* Dark mode toggle button */
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            cursor: pointer;
+            font-size: 1.2rem;
+            margin-left: 10px;
         }
 
-            .form-control:focus {
-                border-color: #727D73;
-                box-shadow: 0 0 5px rgba(114, 125, 115, 0.3);
+            .theme-toggle:hover {
+                color: var(--secondary-color);
             }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="/Home/AboutUs">TRACKXD</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="/Home/Home">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/Home/ViewList">View List</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="theme-toggle" id="themeToggle">
+                            🌓
+                        </button>
                     </li>
                 </ul>
             </div>
@@ -140,11 +178,31 @@
         @RenderBody()
     </div>
 
-    <footer class="footer mt-auto">
+    <footer class="footer">
         <p>BSCS 3-2: Application Development</p>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js"></script>
+    <script>
+        // Dark mode toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        // Check for saved theme in localStorage
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            body.setAttribute('data-theme', savedTheme);
+            themeToggle.textContent = savedTheme === 'dark' ? '🌞' : '🌓';
+        }
+
+        // Toggle theme on button click
+        themeToggle.addEventListener('click', () => {
+            const isDark = body.getAttribute('data-theme') === 'dark';
+            body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            themeToggle.textContent = isDark ? '🌓' : '🌞';
+            localStorage.setItem('theme', isDark ? 'light' : 'dark');
+        });
+    </script>
 </body>
 </html>

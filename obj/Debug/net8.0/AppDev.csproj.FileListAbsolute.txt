@@ -64,3 +64,39 @@ C:\Users\ADMIN\Source\Repos\AppDev_Project\obj\Debug\net8.0\refint\AppDev.dll
 C:\Users\ADMIN\Source\Repos\AppDev_Project\obj\Debug\net8.0\AppDev.pdb
 C:\Users\ADMIN\Source\Repos\AppDev_Project\obj\Debug\net8.0\AppDev.genruntimeconfig.cache
 C:\Users\ADMIN\Source\Repos\AppDev_Project\obj\Debug\net8.0\ref\AppDev.dll
+C:\Users\ADMIN\Desktop\PUP 3rd Year\AppDev\Proj\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\ADMIN\Desktop\PUP 3rd Year\AppDev\Proj\bin\Debug\net8.0\appsettings.json
+C:\Users\ADMIN\Desktop\PUP 3rd Year\AppDev\Proj\bin\Debug\net8.0\MediaList.json
+C:\Users\ADMIN\Desktop\PUP 3rd Year\AppDev\Proj\bin\Debug\net8.0\AppDev.staticwebassets.runtime.json
+C:\Users\ADMIN\Desktop\PUP 3rd Year\AppDev\Proj\bin\Debug\net8.0\AppDev.staticwebassets.endpoints.json
+C:\Users\ADMIN\Desktop\PUP 3rd Year\AppDev\Proj\bin\Debug\net8.0\AppDev.exe
+C:\Users\ADMIN\Desktop\PUP 3rd Year\AppDev\Proj\bin\Debug\net8.0\AppDev.deps.json
+C:\Users\ADMIN\Desktop\PUP 3rd Year\AppDev\Proj\bin\Debug\net8.0\AppDev.runtimeconfig.json
+C:\Users\ADMIN\Desktop\PUP 3rd Year\AppDev\Proj\bin\Debug\net8.0\AppDev.dll
+C:\Users\ADMIN\Desktop\PUP 3rd Year\AppDev\Proj\bin\Debug\net8.0\AppDev.pdb
+C:\Users\ADMIN\Desktop\PUP 3rd Year\AppDev\Proj\obj\Debug\net8.0\AppDev.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ADMIN\Desktop\PUP 3rd Year\AppDev\Proj\obj\Debug\net8.0\AppDev.AssemblyInfoInputs.cache
+C:\Users\ADMIN\Desktop\PUP 3rd Year\AppDev\Proj\obj\Debug\net8.0\AppDev.AssemblyInfo.cs
+C:\Users\ADMIN\Desktop\PUP 3rd Year\AppDev\Proj\obj\Debug\net8.0\AppDev.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\Desktop\PUP 3rd Year\AppDev\Proj\obj\Debug\net8.0\AppDev.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\ADMIN\Desktop\PUP 3rd Year\AppDev\Proj\obj\Debug\net8.0\AppDev.RazorAssemblyInfo.cache
+C:\Users\ADMIN\Desktop\PUP 3rd Year\AppDev\Proj\obj\Debug\net8.0\AppDev.RazorAssemblyInfo.cs
+C:\Users\ADMIN\Desktop\PUP 3rd Year\AppDev\Proj\obj\Debug\net8.0\AppDev.sourcelink.json
+C:\Users\ADMIN\Desktop\PUP 3rd Year\AppDev\Proj\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\ADMIN\Desktop\PUP 3rd Year\AppDev\Proj\obj\Debug\net8.0\scopedcss\bundle\AppDev.styles.css
+C:\Users\ADMIN\Desktop\PUP 3rd Year\AppDev\Proj\obj\Debug\net8.0\scopedcss\projectbundle\AppDev.bundle.scp.css
+C:\Users\ADMIN\Desktop\PUP 3rd Year\AppDev\Proj\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\ADMIN\Desktop\PUP 3rd Year\AppDev\Proj\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\ADMIN\Desktop\PUP 3rd Year\AppDev\Proj\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\ADMIN\Desktop\PUP 3rd Year\AppDev\Proj\obj\Debug\net8.0\staticwebassets\msbuild.AppDev.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\ADMIN\Desktop\PUP 3rd Year\AppDev\Proj\obj\Debug\net8.0\staticwebassets\msbuild.AppDev.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\Users\ADMIN\Desktop\PUP 3rd Year\AppDev\Proj\obj\Debug\net8.0\staticwebassets\msbuild.build.AppDev.props
+C:\Users\ADMIN\Desktop\PUP 3rd Year\AppDev\Proj\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.AppDev.props
+C:\Users\ADMIN\Desktop\PUP 3rd Year\AppDev\Proj\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.AppDev.props
+C:\Users\ADMIN\Desktop\PUP 3rd Year\AppDev\Proj\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\ADMIN\Desktop\PUP 3rd Year\AppDev\Proj\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\ADMIN\Desktop\PUP 3rd Year\AppDev\Proj\obj\Debug\net8.0\AppDev.dll
+C:\Users\ADMIN\Desktop\PUP 3rd Year\AppDev\Proj\obj\Debug\net8.0\refint\AppDev.dll
+C:\Users\ADMIN\Desktop\PUP 3rd Year\AppDev\Proj\obj\Debug\net8.0\AppDev.pdb
+C:\Users\ADMIN\Desktop\PUP 3rd Year\AppDev\Proj\obj\Debug\net8.0\AppDev.genruntimeconfig.cache
+C:\Users\ADMIN\Desktop\PUP 3rd Year\AppDev\Proj\obj\Debug\net8.0\ref\AppDev.dll

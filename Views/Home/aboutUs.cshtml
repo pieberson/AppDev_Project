@@ -8,59 +8,134 @@
     body {
         font-family: 'Open Sans', Arial, sans-serif;
         line-height: 1.6;
-        background-color: #F0F0D7; 
-        color: #5D8736; 
+        background-color: #F0F0D7; /* Light beige background */
+        color: #4A5A6B; /* Dark blue-gray for text */
     }
 
     h1, h2, h3, h4 {
         font-weight: 600;
-        color: #5D8736; 
+        color: #5D8736; /* Dark green for headings */
     }
 
     p, ul, li {
         font-size: 1rem;
-        color: #5D8736; 
+        color: #4A5A6B; /* Dark blue-gray for text */
     }
 
     .lead {
         font-size: 1.25rem;
-        color: #AB886D; 
+        color: #AB886D; /* Light brown for lead text */
     }
 
     /* Section styling */
     .section-title {
-        color: #5D8736; 
-        font-size: 1.5rem;
-        margin-top: 30px;
+        color: #5D8736; /* Dark green for section titles */
+        font-size: 2.5rem; /* Increased font size for Features title */
+        margin-top: 40px;
         font-weight: 600;
+        text-align: center;
     }
 
+    /* Updated section content (cards) styling */
     .section-content {
-        margin-top: 10px;
+        margin-top: 20px;
+        padding: 20px;
+        background-color: #A7C89E; /* Softer green for cards in light mode */
+        border-radius: 12px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
     }
+
+        .section-content:hover {
+            transform: translateY(-5px); /* Lift effect on hover */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Subtle shadow on hover */
+            background-color: #8A9C76; /* Darker green on hover */
+        }
+
+    /* Updated Hero Section */
+    .hero-section {
+        background-color: #A7C89E; /* Softer green background for hero section (matches cards) */
+        color: #FFFFFF; /* White text */
+        padding: 80px 20px;
+        border-radius: 12px;
+        margin-bottom: 40px;
+        text-align: center;
+        transition: background-color 0.3s ease; /* Hover effect transition */
+    }
+
+        .hero-section:hover {
+            background-color: #8A9C76; /* Darker green on hover */
+        }
+
+        .hero-section h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero-section .lead {
+            font-size: 1.5rem;
+            color: #FFFFFF; /* White text for lead */
+        }
 
     /* Styling for the features list */
     .features-list ul {
-        list-style-type: none; 
-        padding-left: 0; 
+        list-style-type: disc; /* Default bullet style */
+        padding-left: 20px; /* Indentation for list */
     }
 
     .features-list li {
-        font-size: 1rem;
-        padding-left: 0; 
-        position: relative;
+        font-size: 1.1rem; /* Slightly larger font size for list items */
+        padding: 10px 0; /* Add spacing between list items */
     }
 
-        .features-list li:before {
-            content: "•"; 
-            position: absolute;
-            left: -20px; 
-            font-size: 1rem; 
-            color: #AB886D; 
+    /* Button styling */
+    .btn-primary {
+        background-color: #AB886D; /* Light brown button */
+        border-color: #AB886D;
+        font-weight: 600;
+        border-radius: 25px;
+        padding: 10px 20px;
+        margin-top: 20px;
+    }
+
+        .btn-primary:hover {
+            background-color: #8A6D56; /* Darker brown on hover */
+            border-color: #8A6D56;
         }
+
+    /* Dark mode adjustments */
+    [data-theme="dark"] body {
+        background-color: #243642; /* Dark blue-gray background */
+        color: #FFFFFF; /* White text for all text in dark mode */
+    }
+
+    [data-theme="dark"] .section-content {
+        background-color: #387478; /* Dark teal color for cards in dark mode */
+    }
+
+    [data-theme="dark"] .hero-section {
+        background-color: #387478; /* Dark teal color for hero section (matches cards) */
+    }
+
+    [data-theme="dark"] .section-title {
+        font-size: 3rem; /* Increased font size for Features title in dark mode */
+        color: #FFFFFF; /* White text for Features title */
+    }
+
+    [data-theme="dark"] .features-list li {
+        color: #FFFFFF; /* White text for list items in dark mode */
+    }
+
+    /* Ensure that the "Welcome to Trackxd" text is also white in dark mode */
+    [data-theme="dark"] .hero-section h1,
+    [data-theme="dark"] .hero-section .lead,
+    [data-theme="dark"] .container p {
+        color: #FFFFFF; /* White text for all text in the hero section and welcome text */
+    }
 </style>
 
-<div class="text-center">
+<!-- Hero Section -->
+<div class="hero-section">
     <h1 class="display-4">Explore. Track. Enjoy.</h1>
     <p class="lead">Only with Trackxd.</p>
 </div>
@@ -69,36 +144,33 @@
     <p>
         Welcome to <strong>Trackxd</strong>, developed by Group 7, in compliance with the final project requirements for Application Development (COMP 019) in the BSCS 3-2 block:
     </p>
-    <ul class="features-list">
-        <li>Daquioag, Ace</li>
-        <li>Lopez, Jenna Mae C.</li>
-        <li>Manapsal, Kevin C.</li>
-        <li>Siapengco, Yoj M.</li>
-        <li>Soliven, Prince Bryll</li>
-    </ul>
+    <div class="section-content">
+        <ul class="features-list">
+            <li>Daquioag, Ace</li>
+            <li>Lopez, Jenna Mae C.</li>
+            <li>Manapsal, Kevin C.</li>
+            <li>Siapengco, Yoj M.</li>
+            <li>Soliven, Prince Bryll</li>
+        </ul>
+    </div>
 </div>
 
 <div class="container mt-5">
     <h3 class="section-title">Features</h3>
-    <div class="features-list">
-        <h4 class="section-title">Home Tab:</h4>
-        <ul>
+    <div class="section-content">
+        <h4 class="section-title" style="font-size: 1.75rem;">Home Tab:</h4> <!-- Adjusted font size -->
+        <ul class="features-list">
             <li>Easily log the media you’ve completed (movies, TV shows, books).</li>
             <li>Add new entries with a single click.</li>
             <li>Keep your collection up to date and organized.</li>
         </ul>
     </div>
 
-    <div class="features-list">
-        <h4 class="section-title">View List Tab:</h4>
-        <ul>
+    <div class="section-content">
+        <h4 class="section-title" style="font-size: 1.75rem;">View List Tab:</h4> <!-- Adjusted font size -->
+        <ul class="features-list">
             <li>Browse through your media collection.</li>
             <li>Stay on top of what you’ve watched, read, or plan to revisit.</li>
         </ul>
     </div>
-
-    <p>
-        Our mission is to make managing your media collection fun and simple, giving you more time to enjoy your favorite stories.
-        Thanks for choosing <strong>Trackxd</strong>—where your media memories stay organized!
-    </p>
 </div>

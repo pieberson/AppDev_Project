@@ -11,16 +11,16 @@
     <!-- Success Message -->
     @if (TempData["Message"] != null)
     {
-        <div class="alert alert-success text-center" role="alert">
+        <div class="alert alert-success text-center mb-4" role="alert">
             @TempData["Message"]
         </div>
     }
 
     <!-- Sorting Dropdown -->
-    <div class="mb-3 text-center">
-        <form method="get" asp-action="ViewList">
-            <label for="sortBy" class="form-label" style="color: #727D73;">Sort By:</label>
-            <select id="sortBy" name="sortBy" class="form-select w-auto d-inline-block">
+    <div class="mb-3 d-flex justify-content-center align-items-center">
+        <form method="get" asp-action="ViewList" class="d-flex align-items-center gap-2">
+            <label for="sortBy" class="form-label mb-0" style="color: #727D73;">Sort By:</label>
+            <select id="sortBy" name="sortBy" class="form-select w-auto">
                 <option value="Default" selected="@((currentSort == "Default") ? "selected" : null)">Default</option>
                 <option value="Year" selected="@((currentSort == "Year") ? "selected" : null)">Year Finished</option>
                 <option value="Rating" selected="@((currentSort == "Rating") ? "selected" : null)">Rating</option>
@@ -37,42 +37,47 @@
     }
     else
     {
-        <!-- Use table-responsive with no fixed width -->
+        <!-- Table for Media Items -->
         <div class="table-responsive" style="max-width: 100%; overflow-x: hidden;">
-            <table class="table table-striped" style="background-color: #FFFFFF; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); width: 100%;">
+            <table class="table table-striped table-hover" style="background-color: #FFFFFF; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); width: 100%;">
                 <thead class="thead-light" style="background-color: #727D73; color: #FFFFFF;">
                     <tr>
-                        <th>Class</th>
-                        <th>Title</th>
-                        <th>Season</th>
-                        <th>Year Finished</th>
-                        <th>Rating</th>
-                        <th>Review</th>
-                        <th>Actions</th>
+                        <th style="padding: 12px; text-align: center; width: 10%;">Class</th>
+                        <th style="padding: 12px; text-align: center; width: 20%;">Title</th>
+                        <th style="padding: 12px; text-align: center; width: 10%;">Season</th>
+                        <th style="padding: 12px; text-align: center; width: 10%;">Year Finished</th>
+                        <th style="padding: 12px; text-align: center; width: 10%;">Rating</th>
+                        <th style="padding: 12px; text-align: center; width: 25%;">Review</th>
+                        <th style="padding: 12px; text-align: center; width: 15%;">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr>
-                            <td>
-                                @if (item.Class == "Movie")
-                                {
-                                    @:🎥 Movie
-                                }
-                                else if (item.Class == "Show")
-                                {
-                                    @:📺 Show
-                                }
-                                else if (item.Class == "Book")
-                                {
-                                    @:📚 Book
-                                }
+                        <tr style="vertical-align: middle;">
+                            <td style="padding: 12px; text-align: center;">
+                                <div style="display: flex; align-items: center; justify-content: center; gap: 8px;">
+                                    @if (item.Class == "Movie")
+                                    {
+                                        <span>🎥</span>
+                                        <span>Movie</span>
+                                    }
+                                    else if (item.Class == "Show")
+                                    {
+                                        <span>📺</span>
+                                        <span>Show</span>
+                                    }
+                                    else if (item.Class == "Book")
+                                    {
+                                        <span>📚</span>
+                                        <span>Book</span>
+                                    }
+                                </div>
                             </td>
-                            <td>@item.Title</td>
-                            <td>@(item.Class == "Show" ? item.Season?.ToString() ?? "N/A" : "N/A")</td>
-                            <td>@item.YearFinished</td>
-                            <td>
+                            <td style="padding: 12px; text-align: center;">@item.Title</td>
+                            <td style="padding: 12px; text-align: center;">@(item.Class == "Show" ? item.Season?.ToString() ?? "N/A" : "N/A")</td>
+                            <td style="padding: 12px; text-align: center;">@item.YearFinished</td>
+                            <td style="padding: 12px; text-align: center;">
                                 <div style="white-space: nowrap;">
                                     @for (int i = 0; i < item.Rating; i++)
                                     {
@@ -84,10 +89,9 @@
                                     }
                                 </div>
                             </td>
-                            <td>@(!string.IsNullOrEmpty(item.Review) ? item.Review : "No review provided.")</td>
-                            <td>
+                            <td style="padding: 12px; text-align: center;">@(!string.IsNullOrEmpty(item.Review) ? item.Review : "No review provided.")</td>
+                            <td style="padding: 12px; text-align: center;">
                                 <a href="/Home/Edit/@item.Id" class="btn btn-warning btn-sm">Edit</a>
-
                                 <form asp-action="Delete" asp-route-id="@item.Id" method="post" class="d-inline">
                                     <button type="button" class="btn btn-danger btn-sm"
                                             onclick="return confirmDelete('@item.Title', this.form);">
@@ -103,7 +107,7 @@
     }
 </div>
 
-<!-- Modal for delete confirmation -->
+<!-- Modal for Delete Confirmation -->
 <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -112,8 +116,8 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Are you sure you want to delete this file?
-                <p id="deleteItemTitle" style="font-weight: bold;"></p>
+                <p>Are you sure you want to delete this file?</p>
+                <p id="deleteItemTitle" style="font-weight: bold; color: #727D73;"></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -123,6 +127,7 @@
     </div>
 </div>
 
+<!-- JavaScript for Delete Confirmation -->
 <script>
     let deleteForm;
 
@@ -146,3 +151,35 @@
         }
     });
 </script>
+
+<!-- Optional Custom CSS -->
+<style>
+    .table-hover tbody tr:hover {
+        background-color: #f8f9fa;
+        transition: background-color 0.3s ease;
+    }
+
+    .table th, .table td {
+        vertical-align: middle;
+    }
+
+    .btn-primary {
+        background-color: #727D73;
+        border-color: #727D73;
+    }
+
+        .btn-primary:hover {
+            background-color: #5a665b;
+            border-color: #5a665b;
+        }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+        }
+</style>
