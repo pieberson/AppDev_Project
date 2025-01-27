@@ -2,18 +2,186 @@
     ViewData["Title"] = "Home";
 }
 
-<div class="container mt-4 d-flex justify-content-center">
-    <div class="col-md-6">
-        <h1 class="text-center mb-4">Log Media</h1>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+    /* Light mode styles */
+    body {
+        font-family: 'Open Sans', Arial, sans-serif;
+        background-color: #F0F0D7; /* Light beige background */
+        color: #4A5A6B; /* Dark blue-gray for text */
+    }
+
+    h1 {
+        font-weight: 600;
+        color: #FFFFFF; /* White for the heading text */
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .form-container {
+        background-color: #A7C89E; /* Softer green for the form container */
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .form-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+        .form-group label {
+            font-weight: 600;
+            color: #5D8736; /* Dark green for labels */
+        }
+
+    .form-control {
+        background-color: #FFFFFF; /* White background for inputs */
+        border: 1px solid #8A9C76; /* Darker green border */
+        border-radius: 8px;
+        padding: 10px;
+        font-size: 1rem;
+        color: #4A5A6B;
+        width: 100%;
+    }
+
+        .form-control:focus {
+            border-color: #5D8736; /* Dark green border on focus */
+            box-shadow: 0 0 5px rgba(93, 135, 54, 0.5);
+        }
+
+    .rating {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+
+        .rating input {
+            display: none;
+        }
+
+        .rating label {
+            font-size: 2rem;
+            color: #d3d3d3;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+            .rating label:hover,
+            .rating label:hover ~ label {
+                color: #FFD700;
+            }
+
+        .rating input:checked ~ label {
+            color: #FFD700;
+        }
+
+    .btn-primary {
+        background-color: #5D8736;
+        border: none;
+        font-weight: 600;
+        border-radius: 25px;
+        padding: 10px 20px;
+        width: 100%;
+        font-size: 1.1rem;
+        transition: background-color 0.3s ease;
+        cursor: pointer;
+    }
+
+        .btn-primary:hover {
+            background-color: #8A9C76;
+        }
+
+    .alert {
+        background-color: #D4EDDA;
+        border: 1px solid #C3E6CB;
+        color: #155724;
+        text-align: center;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Dark mode styles */
+    body[data-theme="dark"] {
+        background-color: #243642; /* Dark blue-gray background */
+        color: #FFFFFF; /* White text */
+    }
+
+        body[data-theme="dark"] .form-container {
+            background-color: #387478; /* Dark teal for the form container */
+        }
+
+        body[data-theme="dark"] .form-group label {
+            color: #FFFFFF; /* White for labels */
+        }
+
+        body[data-theme="dark"] .form-control {
+            background-color: #2C5C5F; /* Darker background for inputs */
+            color: #FFFFFF; /* White text */
+            border: 1px solid #4A6A6C; /* Darker border */
+        }
+
+            body[data-theme="dark"] .form-control:focus {
+                border-color: #6D8C8A; /* Focused border */
+                box-shadow: 0 0 5px rgba(93, 135, 54, 0.5);
+            }
+
+        body[data-theme="dark"] .rating label {
+            color: #7F7F7F; /* Lighter gray for unselected stars in dark mode */
+        }
+
+            body[data-theme="dark"] .rating label:hover,
+            body[data-theme="dark"] .rating label:hover ~ label {
+                color: #FFD700; /* Yellow for hovered stars */
+            }
+
+        body[data-theme="dark"] .rating input:checked ~ label {
+            color: #FFD700; /* Yellow for selected stars */
+        }
+
+        body[data-theme="dark"] .btn-primary {
+            background-color: #6D8C8A; /* Softer green for button */
+        }
+
+            body[data-theme="dark"] .btn-primary:hover {
+                background-color: #4A6A6C; /* Darker green on hover */
+            }
+
+        body[data-theme="dark"] .alert {
+            background-color: #3E5C5F; /* Darker green for alerts */
+            border: 1px solid #6D8C8A; /* Darker border for alert */
+            color: #D4EDDA; /* Light green text for contrast */
+        }
+</style>
+
+<div class="container">
+    <div class="form-container">
+        <h1>Log Media</h1>
         @if (TempData["Message"] != null)
         {
-            <div class="alert alert-success text-center" role="alert">
+            <div class="alert" role="alert">
                 @TempData["Message"]
             </div>
         }
 
         <form asp-controller="Home" asp-action="AddNew" method="post">
-            <div class="form-group mb-3">
+            <div class="form-group">
                 <label for="Class">Class</label>
                 <select id="Class" name="Class" class="form-control" onchange="toggleSeasonField()" required>
                     <option value="" disabled selected>Select Class</option>
@@ -22,15 +190,18 @@
                     <option value="Book">📚 Book</option>
                 </select>
             </div>
-            <div class="form-group mb-3">
+
+            <div class="form-group">
                 <label for="InputTitle">Input Title</label>
                 <input type="text" id="InputTitle" name="InputTitle" class="form-control" placeholder="Enter Title" required />
             </div>
-            <div class="form-group mb-3" id="SeasonField" style="display: none;">
+
+            <div class="form-group" id="SeasonField" style="display: none;">
                 <label for="Season">Season</label>
                 <input type="number" id="Season" name="Season" class="form-control" placeholder="Enter Season" min="1" />
             </div>
-            <div class="form-group mb-3">
+
+            <div class="form-group">
                 <label for="YearFinished">Year Finished</label>
                 <select id="YearFinished" name="YearFinished" class="form-control" required>
                     <option value="" disabled selected>Select Year</option>
@@ -40,7 +211,8 @@
                     }
                 </select>
             </div>
-            <div class="form-group mb-3">
+
+            <div class="form-group">
                 <label for="Rating">Rating</label>
                 <div class="rating" id="Rating">
                     <input type="radio" id="star5" name="Rating" value="5" required />
@@ -55,11 +227,13 @@
                     <label for="star1" title="1 star">★</label>
                 </div>
             </div>
-            <div class="form-group mb-3">
+
+            <div class="form-group">
                 <label for="Review">Review (Optional)</label>
                 <textarea id="Review" name="Review" class="form-control" placeholder="Write your review here..."></textarea>
             </div>
-            <button type="submit" class="btn btn-primary w-100 mt-4">Add</button>
+
+            <button type="submit" class="btn btn-primary">Add</button>
         </form>
     </div>
 </div>
@@ -68,10 +242,14 @@
     function toggleSeasonField() {
         const classField = document.getElementById("Class").value;
         const seasonField = document.getElementById("SeasonField");
+
         if (classField === "Show") {
             seasonField.style.display = "block";
         } else {
             seasonField.style.display = "none";
         }
     }
+
+    // Check initial selection
+    toggleSeasonField();
 </script>

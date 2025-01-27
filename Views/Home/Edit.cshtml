@@ -8,7 +8,7 @@
     <div class="col-md-6">
         <!-- Back Button -->
         <div class="mb-3">
-            <a href="/Home/ViewList" class="btn btn-secondary">Back</a>
+            <a href="/Home/ViewList" class="btn btn-back">Back</a>
         </div>
 
         <h1 class="text-center mb-4">Edit Media Item</h1>
@@ -104,3 +104,69 @@
         toggleSeasonField();
     });
 </script>
+
+<!-- Custom CSS for Light and Dark Mode Buttons -->
+<style>
+    /* Light Mode Styles */
+    body {
+        font-family: 'Open Sans', Arial, sans-serif;
+        background-color: #F0F0D7;
+        color: #4A5A6B;
+    }
+
+    .btn-back {
+        background-color: #5D8736;
+        border-color: #5D8736;
+        color: #FFFFFF; /* White font color for light mode */
+    }
+
+        .btn-back:hover {
+            background-color: #8A9C76;
+            border-color: #8A9C76;
+        }
+
+    .btn-primary {
+        background-color: #5D8736;
+        border-color: #5D8736;
+    }
+
+        .btn-primary:hover {
+            background-color: #8A9C76;
+            border-color: #8A9C76;
+        }
+
+    .btn-sm {
+        padding: 0.5rem 1rem; /* Increase padding for medium size button */
+        font-size: 1rem; /* Set font size to default */
+        line-height: 1.5;
+        border-radius: 0.2rem;
+    }
+
+    /* Dark Mode Styles */
+    body[data-theme="dark"] {
+        background-color: #243642;
+        color: #FFFFFF;
+    }
+
+        body[data-theme="dark"] .btn-back {
+            background-color: #6D8C8A;
+            border-color: #6D8C8A;
+            color: #FFFFFF; /* White font color for dark mode */
+        }
+
+            body[data-theme="dark"] .btn-back:hover {
+                background-color: #4A6A6C;
+                border-color: #4A6A6C;
+            }
+
+        body[data-theme="dark"] .btn-primary {
+            background-color: #6D8C8A;
+            border-color: #6D8C8A;
+            color: #FFFFFF;
+        }
+
+            body[data-theme="dark"] .btn-primary:hover {
+                background-color: #4A6A6C;
+                border-color: #4A6A6C;
+            }
+</style>

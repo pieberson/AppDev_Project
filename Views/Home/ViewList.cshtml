@@ -6,12 +6,12 @@
 }
 
 <div class="container mt-4">
-    <h1 class="text-center" style="color: #727D73;">TRACKXD</h1>
+    <h1 class="text-center" style="color: #5D8736;">TRACKXD</h1>
 
     <!-- Success Message -->
     @if (TempData["Message"] != null)
     {
-        <div class="alert alert-success text-center mb-4" role="alert">
+        <div class="alert" role="alert">
             @TempData["Message"]
         </div>
     }
@@ -19,28 +19,28 @@
     <!-- Sorting Dropdown -->
     <div class="mb-3 d-flex justify-content-center align-items-center">
         <form method="get" asp-action="ViewList" class="d-flex align-items-center gap-2">
-            <label for="sortBy" class="form-label mb-0" style="color: #727D73;">Sort By:</label>
-            <select id="sortBy" name="sortBy" class="form-select w-auto">
+            <label for="sortBy" class="form-label mb-0" style="color: #5D8736;">Sort By:</label>
+            <select id="sortBy" name="sortBy" class="form-select w-auto" style="border-color: #8A9C76;">
                 <option value="Default" selected="@((currentSort == "Default") ? "selected" : null)">Default</option>
                 <option value="Year" selected="@((currentSort == "Year") ? "selected" : null)">Year Finished</option>
                 <option value="Rating" selected="@((currentSort == "Rating") ? "selected" : null)">Rating</option>
                 <option value="Title" selected="@((currentSort == "Title") ? "selected" : null)">Title</option>
                 <option value="Class" selected="@((currentSort == "Class") ? "selected" : null)">Class</option>
             </select>
-            <button type="submit" class="btn btn-primary" style="background-color: #727D73; border-color: #727D73;">Sort</button>
+            <button type="submit" class="btn btn-primary" style="background-color: #5D8736; border-color: #5D8736;">Sort</button>
         </form>
     </div>
 
     @if (!Model.Any())
     {
-        <p class="text-center mt-4" style="color: #727D73;">No media items added yet.</p>
+        <p class="text-center mt-4" style="color: #5D8736;">No media items added yet.</p>
     }
     else
     {
         <!-- Table for Media Items -->
         <div class="table-responsive" style="max-width: 100%; overflow-x: hidden;">
-            <table class="table table-striped table-hover" style="background-color: #FFFFFF; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); width: 100%;">
-                <thead class="thead-light" style="background-color: #727D73; color: #FFFFFF;">
+            <table class="table table-striped table-hover" style="width: 100%;">
+                <thead class="thead-light">
                     <tr>
                         <th style="padding: 12px; text-align: center; width: 10%;">Class</th>
                         <th style="padding: 12px; text-align: center; width: 20%;">Title</th>
@@ -54,7 +54,7 @@
                 <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr style="vertical-align: middle;">
+                        <tr class="table-row">
                             <td style="padding: 12px; text-align: center;">
                                 <div style="display: flex; align-items: center; justify-content: center; gap: 8px;">
                                     @if (item.Class == "Movie")
@@ -91,13 +91,15 @@
                             </td>
                             <td style="padding: 12px; text-align: center;">@(!string.IsNullOrEmpty(item.Review) ? item.Review : "No review provided.")</td>
                             <td style="padding: 12px; text-align: center;">
-                                <a href="/Home/Edit/@item.Id" class="btn btn-warning btn-sm">Edit</a>
-                                <form asp-action="Delete" asp-route-id="@item.Id" method="post" class="d-inline">
-                                    <button type="button" class="btn btn-danger btn-sm"
-                                            onclick="return confirmDelete('@item.Title', this.form);">
-                                        Delete
-                                    </button>
-                                </form>
+                                <div class="d-flex gap-2 justify-content-center">
+                                    <a href="/Home/Edit/@item.Id" class="btn btn-warning btn-sm">Edit</a>
+                                    <form asp-action="Delete" asp-route-id="@item.Id" method="post" class="d-inline">
+                                        <button type="button" class="btn btn-danger btn-sm"
+                                                onclick="return confirmDelete('@item.Title', this.form);">
+                                            Delete
+                                        </button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                     }
@@ -117,7 +119,7 @@
             </div>
             <div class="modal-body">
                 <p>Are you sure you want to delete this file?</p>
-                <p id="deleteItemTitle" style="font-weight: bold; color: #727D73;"></p>
+                <p id="deleteItemTitle" style="font-weight: bold; color: #5D8736;"></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -132,19 +134,26 @@
     let deleteForm;
 
     function confirmDelete(itemTitle, formElement) {
-        // Set the item title in the modal
         document.getElementById('deleteItemTitle').textContent = "Title: " + itemTitle;
-
-        // Save the form reference to submit later
         deleteForm = formElement;
 
-        // Show the modal
         const deleteModal = new bootstrap.Modal(document.getElementById('deleteConfirmationModal'));
+
+        // Check if the theme is dark and apply dark mode styles to the modal
+        if (document.body.dataset.theme === "dark") {
+            const modalContent = document.querySelector('.modal-content');
+            modalContent.style.backgroundColor = '#2C3E50'; // Dark background for dark mode
+            modalContent.style.color = '#FFFFFF'; // White text for dark mode
+        } else {
+            const modalContent = document.querySelector('.modal-content');
+            modalContent.style.backgroundColor = '#FFFFFF'; // White background for light mode
+            modalContent.style.color = '#000000'; // Black text for light mode
+        }
+
         deleteModal.show();
-        return false; // Prevent the default form submission
+        return false;
     }
 
-    // Attach event listener for delete confirmation
     document.getElementById('confirmDeleteButton').addEventListener('click', function () {
         if (deleteForm) {
             deleteForm.submit();
@@ -154,32 +163,101 @@
 
 <!-- Optional Custom CSS -->
 <style>
-    .table-hover tbody tr:hover {
-        background-color: #f8f9fa;
-        transition: background-color 0.3s ease;
+    /* Light Mode Styles */
+    body {
+        font-family: 'Open Sans', Arial, sans-serif;
+        background-color: #F0F0D7;
+        color: #4A5A6B; /* Dark gray for text in light mode */
     }
 
-    .table th, .table td {
-        vertical-align: middle;
+    h1.text-center {
+        color: #5D8736; /* Green shade for "TRACKXD" in light mode */
+    }
+
+    .table {
+        background-color: #E8F5E9; /* Light green shade for table background */
+        color: #2E7D32; /* Darker green shade for table text */
+    }
+
+        .table th, .table td {
+            vertical-align: middle;
+            color: #2E7D32; /* Ensure text inside table cells is green in light mode */
+        }
+
+    .table-row:hover {
+        background-color: #C8E6C9; /* Lighter green shade for hover effect */
     }
 
     .btn-primary {
-        background-color: #727D73;
-        border-color: #727D73;
+        background-color: #5D8736;
+        border-color: #5D8736;
     }
-
-        .btn-primary:hover {
-            background-color: #5a665b;
-            border-color: #5a665b;
-        }
 
     .btn-danger {
         background-color: #dc3545;
         border-color: #dc3545;
     }
 
-        .btn-danger:hover {
+    .btn-warning {
+        background-color: #ffc107;
+        border-color: #ffc107;
+    }
+
+    /* Dark Mode Styles */
+    body[data-theme="dark"] {
+        background-color: #243642;
+        color: #FFFFFF; /* White text for all elements */
+    }
+
+        body[data-theme="dark"] h1.text-center {
+            color: #FFFFFF; /* White text for "TRACKXD" */
+        }
+
+        body[data-theme="dark"] .table {
+            background-color: #2C5C5F; /* Darker background */
+            color: #FFFFFF; /* White text for table content */
+        }
+
+            body[data-theme="dark"] .table th, body[data-theme="dark"] .table td {
+                vertical-align: middle;
+                color: #FFFFFF; /* White text for table headers and cells */
+            }
+
+        body[data-theme="dark"] .table-row:hover {
+            background-color: #3E5C5F; /* Darker hover effect */
+        }
+
+        body[data-theme="dark"] .btn-primary {
+            background-color: #6D8C8A;
+            border-color: #6D8C8A;
+            color: #FFFFFF; /* White text for buttons */
+        }
+
+        body[data-theme="dark"] .btn-danger {
             background-color: #c82333;
             border-color: #bd2130;
+            color: #FFFFFF; /* White text for buttons */
+        }
+
+        body[data-theme="dark"] .btn-warning {
+            background-color: #e0a800;
+            border-color: #d39e00;
+            color: #FFFFFF; /* White text for buttons */
+        }
+
+        body[data-theme="dark"] .form-label {
+            color: #FFFFFF; /* White text for labels */
+        }
+
+        body[data-theme="dark"] .alert {
+            color: #FFFFFF; /* White text for alerts */
+        }
+
+        body[data-theme="dark"] .modal-title,
+        body[data-theme="dark"] .modal-body,
+        body[data-theme="dark"] .modal-footer {
+            color: #FFFFFF; /* White text for modal content */
         }
 </style>
+
+
