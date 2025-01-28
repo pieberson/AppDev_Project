@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "W6qtIKhhiM0fc7ohhaUvatZ2IeQ/Gh6AItfFlnjpOLM=",
+  "Hash": "JnJ9XS/Dirz0znx4+yCC++QkgPULKSdEnqgPZlaC8Zk=",
   "Source": "AppDev",
   "BasePath": "_content/AppDev",
   "Mode": "Default",
@@ -1317,6 +1317,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\ADMIN\\Desktop\\PUP 3rd Year\\AppDev\\Proj\\wwwroot\\TRACKXDLOGO.png",
+      "SourceId": "AppDev",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ADMIN\\Desktop\\PUP 3rd Year\\AppDev\\Proj\\wwwroot\\",
+      "BasePath": "_content/AppDev",
+      "RelativePath": "TRACKXDLOGO#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "dt27a97nkj",
+      "Integrity": "/7cJYy651D6kVmMWLIGYkJlWVQXhP4jR92FKVWad6FU=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\TRACKXDLOGO.png"
     }
   ],
   "Endpoints": [
@@ -6401,6 +6422,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-16aFlqtpsG9RyieKZUUUjkJpqTgcJtWXwT312I4Iz1s="
+        }
+      ]
+    },
+    {
+      "Route": "TRACKXDLOGO.dt27a97nkj.png",
+      "AssetFile": "C:\\Users\\ADMIN\\Desktop\\PUP 3rd Year\\AppDev\\Proj\\wwwroot\\TRACKXDLOGO.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "12971"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"/7cJYy651D6kVmMWLIGYkJlWVQXhP4jR92FKVWad6FU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 28 Jan 2025 10:21:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "dt27a97nkj"
+        },
+        {
+          "Name": "label",
+          "Value": "TRACKXDLOGO.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-/7cJYy651D6kVmMWLIGYkJlWVQXhP4jR92FKVWad6FU="
+        }
+      ]
+    },
+    {
+      "Route": "TRACKXDLOGO.png",
+      "AssetFile": "C:\\Users\\ADMIN\\Desktop\\PUP 3rd Year\\AppDev\\Proj\\wwwroot\\TRACKXDLOGO.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "12971"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"/7cJYy651D6kVmMWLIGYkJlWVQXhP4jR92FKVWad6FU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 28 Jan 2025 10:21:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-/7cJYy651D6kVmMWLIGYkJlWVQXhP4jR92FKVWad6FU="
         }
       ]
     }

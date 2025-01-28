@@ -120,7 +120,7 @@
             </div>
             <div class="modal-body">
                 <p>Are you sure you want to delete this file?</p>
-                <p id="deleteItemTitle" style="font-weight: bold; color: #5D8736;"></p>
+                <p id="deleteItemTitle" style="font-weight: bold;"></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -203,5 +203,41 @@
             background-color: #3E5C5F;
             color: #A5D6A7;
             border-color: #66BB6A;
+        }
+
+        body[data-theme="dark"] .table {
+            background-color: #2C5C5F;
+            color: #A5D6A7;
+        }
+
+            body[data-theme="dark"] .table th,
+            body[data-theme="dark"] .table td {
+                color: #A5D6A7;
+            }
+
+        body[data-theme="dark"] .table-row:hover {
+            background-color: #3E5C5F;
+        }
+
+        /* Dark Mode Modal Styles */
+        body[data-theme="dark"] .modal-content {
+            background-color: #2C3E50;
+            color: #FFFFFF;
+        }
+
+        body[data-theme="dark"] .modal-header {
+            border-bottom: 1px solid #34495E;
+        }
+
+        body[data-theme="dark"] .modal-footer {
+            border-top: 1px solid #34495E;
+        }
+
+        body[data-theme="dark"] .btn-close {
+            filter: invert(1); /* Invert the close button icon for better visibility */
+        }
+
+        body[data-theme="dark"] #deleteItemTitle {
+            color: #A5D6A7; /* Ensure the title text is visible in dark mode */
         }
 </style>
