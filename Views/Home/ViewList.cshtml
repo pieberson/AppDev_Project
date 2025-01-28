@@ -11,7 +11,7 @@
     <!-- Success Message -->
     @if (TempData["Message"] != null)
     {
-        <div class="alert" role="alert">
+        <div class="alert alert-success" role="alert" style="background-color: #C8E6C9; color: #2E7D32; border-color: #388E3C;">
             @TempData["Message"]
         </div>
     }
@@ -92,7 +92,8 @@
                             <td style="padding: 12px; text-align: center;">@(!string.IsNullOrEmpty(item.Review) ? item.Review : "No review provided.")</td>
                             <td style="padding: 12px; text-align: center;">
                                 <div class="d-flex gap-2 justify-content-center">
-                                    <a href="/Home/Edit/@item.Id" class="btn btn-warning btn-sm">Edit</a>
+                                    <!-- Updated Edit Button Link -->
+                                    <a href="/TRACKXD/Edit/@item.Id" class="btn btn-warning btn-sm">Edit</a>
                                     <form asp-action="Delete" asp-route-id="@item.Id" method="post" class="d-inline">
                                         <button type="button" class="btn btn-danger btn-sm"
                                                 onclick="return confirmDelete('@item.Title', this.form);">
@@ -138,18 +139,6 @@
         deleteForm = formElement;
 
         const deleteModal = new bootstrap.Modal(document.getElementById('deleteConfirmationModal'));
-
-        // Check if the theme is dark and apply dark mode styles to the modal
-        if (document.body.dataset.theme === "dark") {
-            const modalContent = document.querySelector('.modal-content');
-            modalContent.style.backgroundColor = '#2C3E50'; // Dark background for dark mode
-            modalContent.style.color = '#FFFFFF'; // White text for dark mode
-        } else {
-            const modalContent = document.querySelector('.modal-content');
-            modalContent.style.backgroundColor = '#FFFFFF'; // White background for light mode
-            modalContent.style.color = '#000000'; // Black text for light mode
-        }
-
         deleteModal.show();
         return false;
     }
@@ -167,25 +156,26 @@
     body {
         font-family: 'Open Sans', Arial, sans-serif;
         background-color: #F0F0D7;
-        color: #4A5A6B; /* Dark gray for text in light mode */
+        color: #4A5A6B;
     }
 
     h1.text-center {
-        color: #5D8736; /* Green shade for "TRACKXD" in light mode */
+        color: #5D8736;
+    }
+
+    .alert-success {
+        background-color: #C8E6C9;
+        color: #2E7D32;
+        border-color: #388E3C;
     }
 
     .table {
-        background-color: #E8F5E9; /* Light green shade for table background */
-        color: #2E7D32; /* Darker green shade for table text */
+        background-color: #E8F5E9;
+        color: #2E7D32;
     }
 
-        .table th, .table td {
-            vertical-align: middle;
-            color: #2E7D32; /* Ensure text inside table cells is green in light mode */
-        }
-
     .table-row:hover {
-        background-color: #C8E6C9; /* Lighter green shade for hover effect */
+        background-color: #C8E6C9;
     }
 
     .btn-primary {
@@ -206,58 +196,12 @@
     /* Dark Mode Styles */
     body[data-theme="dark"] {
         background-color: #243642;
-        color: #FFFFFF; /* White text for all elements */
+        color: #FFFFFF;
     }
 
-        body[data-theme="dark"] h1.text-center {
-            color: #FFFFFF; /* White text for "TRACKXD" */
-        }
-
-        body[data-theme="dark"] .table {
-            background-color: #2C5C5F; /* Darker background */
-            color: #FFFFFF; /* White text for table content */
-        }
-
-            body[data-theme="dark"] .table th, body[data-theme="dark"] .table td {
-                vertical-align: middle;
-                color: #FFFFFF; /* White text for table headers and cells */
-            }
-
-        body[data-theme="dark"] .table-row:hover {
-            background-color: #3E5C5F; /* Darker hover effect */
-        }
-
-        body[data-theme="dark"] .btn-primary {
-            background-color: #6D8C8A;
-            border-color: #6D8C8A;
-            color: #FFFFFF; /* White text for buttons */
-        }
-
-        body[data-theme="dark"] .btn-danger {
-            background-color: #c82333;
-            border-color: #bd2130;
-            color: #FFFFFF; /* White text for buttons */
-        }
-
-        body[data-theme="dark"] .btn-warning {
-            background-color: #e0a800;
-            border-color: #d39e00;
-            color: #FFFFFF; /* White text for buttons */
-        }
-
-        body[data-theme="dark"] .form-label {
-            color: #FFFFFF; /* White text for labels */
-        }
-
-        body[data-theme="dark"] .alert {
-            color: #FFFFFF; /* White text for alerts */
-        }
-
-        body[data-theme="dark"] .modal-title,
-        body[data-theme="dark"] .modal-body,
-        body[data-theme="dark"] .modal-footer {
-            color: #FFFFFF; /* White text for modal content */
+        body[data-theme="dark"] .alert-success {
+            background-color: #3E5C5F;
+            color: #A5D6A7;
+            border-color: #66BB6A;
         }
 </style>
-
-

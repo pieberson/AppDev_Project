@@ -38,24 +38,21 @@ namespace AppDev.Controllers
         }
 
         // Default route: Redirect to About Us (Media Tracker Tab)
-        public IActionResult Index()
-        {
-            return RedirectToAction("AboutUs");
-        }
-
-        // About Us Page (Media Tracker Tab)
+        [Route("TRACKXD/AboutUs")]
         public IActionResult AboutUs()
         {
             return View("AboutUs"); // Renders the About Us page
         }
 
         // Home Page (Add New Media Tab)
+        [Route("TRACKXD/Home")]
         public IActionResult Home()
         {
             return View("Index"); // Displays the "Add New" form
         }
 
         // View List Page
+        [Route("TRACKXD/ViewList")]
         public IActionResult ViewList(string sortBy)
         {
             List<MediaItem> sortedList;
@@ -85,6 +82,7 @@ namespace AppDev.Controllers
 
         // Add New Media Item
         [HttpPost]
+        [Route("TRACKXD/Home/AddNew")]
         public IActionResult AddNew(string Class, string InputTitle, int YearFinished, int Rating, string Review, int? Season)
         {
             if (Class != "Show")
@@ -113,6 +111,7 @@ namespace AppDev.Controllers
         }
 
         // Edit Media Item: Display the Edit Form (GET)
+        [Route("TRACKXD/Edit/{id}")]
         public IActionResult Edit(int id)
         {
             var mediaItem = MediaList.FirstOrDefault(m => m.Id == id);
@@ -125,6 +124,7 @@ namespace AppDev.Controllers
 
         // Edit Media Item: Update the Media Item after form submission (POST)
         [HttpPost]
+        [Route("TRACKXD/Edit/{id}")]
         public IActionResult Edit(int id, string Class, string InputTitle, int YearFinished, int Rating, string Review, int? Season)
         {
             var mediaItem = MediaList.FirstOrDefault(m => m.Id == id);
@@ -149,6 +149,7 @@ namespace AppDev.Controllers
 
         // Delete Media Item: Remove a Media Item
         [HttpPost, ActionName("Delete")]
+        [Route("TRACKXD/Delete/{id}")]
         public IActionResult DeleteConfirmed(int id)
         {
             var mediaItem = MediaList.FirstOrDefault(m => m.Id == id);
@@ -166,6 +167,7 @@ namespace AppDev.Controllers
 
         // Sort Media List (AJAX-based)
         [HttpGet]
+        [Route("TRACKXD/SortList")]
         public IActionResult SortList(string sortBy)
         {
             if (string.IsNullOrEmpty(sortBy)) return BadRequest("Sort parameter is missing.");

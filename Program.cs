@@ -9,19 +9,31 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
 app.UseHttpsRedirection();
-app.UseStaticFiles();  // Serve static files (CSS, JS, images)
+app.UseStaticFiles(); // Serve static files (CSS, JS, images)
 
 app.UseRouting();
 
 app.UseAuthorization();
 
+// Redirect root-level requests to /TRACKXD/AboutUs
+app.Use(async (context, next) =>
+{
+    if (context.Request.Path == "/")
+    {
+        context.Response.Redirect("/TRACKXD/AboutUs");
+        return;
+    }
+    await next();
+});
+
+// Define custom route prefix 'TRACKXD' without the 'Home' controller prefix
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "TRACKXD/{action=AboutUs}/{id?}",
+    defaults: new { controller = "Home" }); // Default controller is 'Home' with AboutUs as the default action
 
 app.Run();
