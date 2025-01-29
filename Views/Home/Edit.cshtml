@@ -28,9 +28,9 @@
                 <label for="Class">Class</label>
                 <select id="Class" name="Class" class="form-control" onchange="toggleSeasonField()" required>
                     <option value="" disabled>Select Class</option>
-                    <option value="Movie" selected="@((Model.Class == "Movie") ? "selected" : null)">🎥 Movie</option>
-                    <option value="Show" selected="@((Model.Class == "Show") ? "selected" : null)">📺 Show</option>
-                    <option value="Book" selected="@((Model.Class == "Book") ? "selected" : null)">📚 Book</option>
+                    <option value="Movie" selected="@(Model.Class == "Movie" ? "selected" : null)">🎥 Movie</option>
+                    <option value="Show" selected="@(Model.Class == "Show" ? "selected" : null)">📺 Show</option>
+                    <option value="Book" selected="@(Model.Class == "Book" ? "selected" : null)">📚 Book</option>
                 </select>
             </div>
 
@@ -53,7 +53,7 @@
                     <option value="" disabled>Select Year</option>
                     @for (int year = 2000; year <= DateTime.Now.Year; year++)
                     {
-                        <option value="@year" selected="@((Model.YearFinished == year) ? "selected" : null)">@year</option>
+                        <option value="@year" selected="@(Model.YearFinished == year ? "selected" : null)">@year</option>
                     }
                 </select>
             </div>
@@ -62,16 +62,11 @@
             <div class="form-group mb-3">
                 <label for="Rating">Rating</label>
                 <div class="rating" id="Rating">
-                    <input type="radio" id="star5_@Model.Id" name="Rating" value="5" @(Model.Rating == 5 ? "checked" : "") />
-                    <label for="star5_@Model.Id" title="5 stars">★</label>
-                    <input type="radio" id="star4_@Model.Id" name="Rating" value="4" @(Model.Rating == 4 ? "checked" : "") />
-                    <label for="star4_@Model.Id" title="4 stars">★</label>
-                    <input type="radio" id="star3_@Model.Id" name="Rating" value="3" @(Model.Rating == 3 ? "checked" : "") />
-                    <label for="star3_@Model.Id" title="3 stars">★</label>
-                    <input type="radio" id="star2_@Model.Id" name="Rating" value="2" @(Model.Rating == 2 ? "checked" : "") />
-                    <label for="star2_@Model.Id" title="2 stars">★</label>
-                    <input type="radio" id="star1_@Model.Id" name="Rating" value="1" @(Model.Rating == 1 ? "checked" : "") />
-                    <label for="star1_@Model.Id" title="1 star">★</label>
+                    @for (int i = 5; i >= 1; i--)
+                    {
+                        <input type="radio" id="star@i_@Model.Id" name="Rating" value="@i" @(Model.Rating == i ? "checked" : "") />
+                        <label for="star@i_@Model.Id" title="@i stars">★</label>
+                    }
                 </div>
             </div>
 
@@ -87,85 +82,44 @@
     </div>
 </div>
 
-<!-- JavaScript to handle showing/hiding the Season field based on class selection -->
 <script>
     function toggleSeasonField() {
         const classField = document.getElementById("Class").value;
-        const seasonField = document.getElementById("SeasonField");
-        if (classField === "Show") {
-            seasonField.style.display = "block";
-        } else {
-            seasonField.style.display = "none";
-        }
+        document.getElementById("SeasonField").style.display = classField === "Show" ? "block" : "none";
     }
 
-    // Ensure the season field is properly displayed based on the initial class value
-    document.addEventListener("DOMContentLoaded", function () {
-        toggleSeasonField();
-    });
+    document.addEventListener("DOMContentLoaded", toggleSeasonField);
 </script>
 
-<!-- Custom CSS for Light and Dark Mode Buttons -->
 <style>
-    /* Light Mode Styles */
     body {
         font-family: 'Open Sans', Arial, sans-serif;
         background-color: #F0F0D7;
         color: #4A5A6B;
     }
 
-    .btn-back {
+    .btn-back, .btn-primary {
         background-color: #5D8736;
         border-color: #5D8736;
         color: #FFFFFF;
     }
 
-        .btn-back:hover {
+        .btn-back:hover, .btn-primary:hover {
             background-color: #8A9C76;
             border-color: #8A9C76;
         }
 
-    .btn-primary {
-        background-color: #5D8736;
-        border-color: #5D8736;
-    }
-
-        .btn-primary:hover {
-            background-color: #8A9C76;
-            border-color: #8A9C76;
-        }
-
-    .btn-sm {
-        padding: 0.5rem 1rem;
-        font-size: 1rem;
-        line-height: 1.5;
-        border-radius: 0.2rem;
-    }
-
-    /* Dark Mode Styles */
     body[data-theme="dark"] {
         background-color: #243642;
         color: #FFFFFF;
     }
 
-        body[data-theme="dark"] .btn-back {
+        body[data-theme="dark"] .btn-back, body[data-theme="dark"] .btn-primary {
             background-color: #6D8C8A;
             border-color: #6D8C8A;
-            color: #FFFFFF;
         }
 
-            body[data-theme="dark"] .btn-back:hover {
-                background-color: #4A6A6C;
-                border-color: #4A6A6C;
-            }
-
-        body[data-theme="dark"] .btn-primary {
-            background-color: #6D8C8A;
-            border-color: #6D8C8A;
-            color: #FFFFFF;
-        }
-
-            body[data-theme="dark"] .btn-primary:hover {
+            body[data-theme="dark"] .btn-back:hover, body[data-theme="dark"] .btn-primary:hover {
                 background-color: #4A6A6C;
                 border-color: #4A6A6C;
             }

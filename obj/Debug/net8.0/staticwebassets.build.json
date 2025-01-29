@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "JnJ9XS/Dirz0znx4+yCC++QkgPULKSdEnqgPZlaC8Zk=",
+  "Hash": "i7KAdPrQp8SN7ZmJizsmwU7q+ljneHWBnm1pxOc476o=",
   "Source": "AppDev",
   "BasePath": "_content/AppDev",
   "Mode": "Default",
@@ -73,8 +73,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "pr0wqv99o0",
-      "Integrity": "Gy41cKczO4jA5w/vCvvv6Eq5xA42Ji5Dv7DoRQ+SCJI=",
+      "Fingerprint": "2op1uwsveh",
+      "Integrity": "zulX2aKiWHaXOU9314nbHP/iDxuWiJ4Ws0ED/3zFjPg=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
@@ -1506,6 +1506,51 @@
       ]
     },
     {
+      "Route": "css/site.2op1uwsveh.css",
+      "AssetFile": "C:\\Users\\ADMIN\\Desktop\\PUP 3rd Year\\AppDev\\Proj\\wwwroot\\css\\site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1047"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"zulX2aKiWHaXOU9314nbHP/iDxuWiJ4Ws0ED/3zFjPg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 29 Jan 2025 03:52:09 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "2op1uwsveh"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-zulX2aKiWHaXOU9314nbHP/iDxuWiJ4Ws0ED/3zFjPg="
+        }
+      ]
+    },
+    {
       "Route": "css/site.css",
       "AssetFile": "C:\\Users\\ADMIN\\Desktop\\PUP 3rd Year\\AppDev\\Proj\\wwwroot\\css\\site.css",
       "Selectors": [],
@@ -1516,7 +1561,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1199"
+          "Value": "1047"
         },
         {
           "Name": "Content-Type",
@@ -1524,11 +1569,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Gy41cKczO4jA5w/vCvvv6Eq5xA42Ji5Dv7DoRQ+SCJI=\""
+          "Value": "\"zulX2aKiWHaXOU9314nbHP/iDxuWiJ4Ws0ED/3zFjPg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 26 Jan 2025 06:02:56 GMT"
+          "Value": "Wed, 29 Jan 2025 03:52:09 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1538,52 +1583,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-Gy41cKczO4jA5w/vCvvv6Eq5xA42Ji5Dv7DoRQ+SCJI="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.pr0wqv99o0.css",
-      "AssetFile": "C:\\Users\\ADMIN\\Desktop\\PUP 3rd Year\\AppDev\\Proj\\wwwroot\\css\\site.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1199"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"Gy41cKczO4jA5w/vCvvv6Eq5xA42Ji5Dv7DoRQ+SCJI=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 26 Jan 2025 06:02:56 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "pr0wqv99o0"
-        },
-        {
-          "Name": "label",
-          "Value": "css/site.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-Gy41cKczO4jA5w/vCvvv6Eq5xA42Ji5Dv7DoRQ+SCJI="
+          "Value": "sha256-zulX2aKiWHaXOU9314nbHP/iDxuWiJ4Ws0ED/3zFjPg="
         }
       ]
     },

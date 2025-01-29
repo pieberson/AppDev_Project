@@ -13,7 +13,7 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseStaticFiles(); // Serve static files (CSS, JS, images)
+app.UseStaticFiles(); // Serve static files
 
 app.UseRouting();
 
@@ -30,10 +30,10 @@ app.Use(async (context, next) =>
     await next();
 });
 
-// Define custom route prefix 'TRACKXD' without the 'Home' controller prefix
+// Define custom route prefix 'TRACKXD'
 app.MapControllerRoute(
     name: "default",
     pattern: "TRACKXD/{action=AboutUs}/{id?}",
-    defaults: new { controller = "Home" }); // Default controller is 'Home' with AboutUs as the default action
+    defaults: new { controller = "Home" }); 
 
 app.Run();

@@ -10,7 +10,7 @@ namespace AppDev.Controllers
         private static string DataFilePath = "MediaList.json";
         private static List<MediaItem> MediaList = LoadMediaList();
 
-        // Load MediaList from the file
+        // Load media list from file
         private static List<MediaItem> LoadMediaList()
         {
             if (System.IO.File.Exists(DataFilePath))
@@ -18,7 +18,7 @@ namespace AppDev.Controllers
                 var jsonData = System.IO.File.ReadAllText(DataFilePath);
                 var mediaList = JsonSerializer.Deserialize<List<MediaItem>>(jsonData) ?? new List<MediaItem>();
 
-                // Ensure unique IDs for items with duplicate or zero IDs
+                // Assign unique IDs if missing or duplicate
                 int idCounter = 1;
                 foreach (var item in mediaList)
                 {
@@ -30,72 +30,48 @@ namespace AppDev.Controllers
             return new List<MediaItem>();
         }
 
-        // Save MediaList to the file
+        // Save media list to file
         private static void SaveMediaList()
         {
             var jsonData = JsonSerializer.Serialize(MediaList);
             System.IO.File.WriteAllText(DataFilePath, jsonData);
         }
 
-        // Default route: Redirect to About Us (Media Tracker Tab)
+        // Routes
         [Route("TRACKXD/AboutUs")]
-        public IActionResult AboutUs()
-        {
-            return View("AboutUs"); // Renders the About Us page
-        }
+        public IActionResult AboutUs() => View("AboutUs");
 
-        // Home Page (Add New Media Tab)
         [Route("TRACKXD/Home")]
-        public IActionResult Home()
-        {
-            return View("Index"); // Displays the "Add New" form
-        }
+        public IActionResult Home() => View("Index");
 
-        // View List Page
         [Route("TRACKXD/ViewList")]
         public IActionResult ViewList(string sortBy)
         {
-            List<MediaItem> sortedList;
-
-            switch (sortBy)
+            List<MediaItem> sortedList = sortBy switch
             {
-                case "Year":
-                    sortedList = MediaList.OrderBy(m => m.YearFinished).ToList();
-                    break;
-                case "Rating":
-                    sortedList = MediaList.OrderByDescending(m => m.Rating).ToList();
-                    break;
-                case "Title":
-                    sortedList = MediaList.OrderBy(m => m.Title).ToList();
-                    break;
-                case "Class":
-                    sortedList = MediaList.OrderBy(m => m.Class).ToList();
-                    break;
-                default:
-                    sortedList = MediaList; // Default order
-                    break;
-            }
+                "Year" => MediaList.OrderBy(m => m.YearFinished).ToList(),
+                "Rating" => MediaList.OrderByDescending(m => m.Rating).ToList(),
+                "Title" => MediaList.OrderBy(m => m.Title).ToList(),
+                "Class" => MediaList.OrderBy(m => m.Class).ToList(),
+                _ => MediaList
+            };
 
-            ViewData["CurrentSort"] = sortBy; // Pass the current sort value to the view
+            ViewData["CurrentSort"] = sortBy;
             return View(sortedList);
         }
 
-        // Add New Media Item
+        // Add new media item
         [HttpPost]
         [Route("TRACKXD/Home/AddNew")]
         public IActionResult AddNew(string Class, string InputTitle, int YearFinished, int Rating, string Review, int? Season)
         {
-            if (Class != "Show")
-            {
-                Season = null; // Set Season to NULL if Class is not "Show"
-            }
+            if (Class != "Show") Season = null; // Nullify season unless it's a show
 
-            // Assign a unique Id to the new MediaItem
             var newId = MediaList.Count > 0 ? MediaList.Max(m => m.Id) + 1 : 1;
 
             MediaList.Add(new MediaItem
             {
-                Id = newId, // Ensure unique ID for each item
+                Id = newId,
                 Class = Class,
                 Title = InputTitle,
                 YearFinished = YearFinished,
@@ -105,74 +81,62 @@ namespace AppDev.Controllers
             });
 
             SaveMediaList();
-
             TempData["Message"] = "New item added successfully!";
-            return RedirectToAction("Home"); // Redirect to the Home tab
+            return RedirectToAction("Home");
         }
 
-        // Edit Media Item: Display the Edit Form (GET)
+        // Edit media item (GET)
         [Route("TRACKXD/Edit/{id}")]
         public IActionResult Edit(int id)
         {
             var mediaItem = MediaList.FirstOrDefault(m => m.Id == id);
-            if (mediaItem == null)
-            {
-                return NotFound(); // Handle case where the item doesn't exist
-            }
-            return View(mediaItem); // Pass the media item to the Edit view
+            return mediaItem == null ? NotFound() : View(mediaItem);
         }
 
-        // Edit Media Item: Update the Media Item after form submission (POST)
+        // Edit media item (POST)
         [HttpPost]
         [Route("TRACKXD/Edit/{id}")]
         public IActionResult Edit(int id, string Class, string InputTitle, int YearFinished, int Rating, string Review, int? Season)
         {
             var mediaItem = MediaList.FirstOrDefault(m => m.Id == id);
-            if (mediaItem == null)
-            {
-                return NotFound();
-            }
+            if (mediaItem == null) return NotFound();
 
-            // Update the media item with the new data
+            // Update item details
             mediaItem.Class = Class;
             mediaItem.Title = InputTitle;
             mediaItem.YearFinished = YearFinished;
             mediaItem.Rating = Rating;
             mediaItem.Review = Review;
-            mediaItem.Season = Class == "Show" ? Season : null; // Only update Season for "Show" items
+            mediaItem.Season = Class == "Show" ? Season : null;
 
-            SaveMediaList(); // Save the updated list to the file
-
+            SaveMediaList();
             TempData["Message"] = "Item updated successfully!";
-            return RedirectToAction("ViewList"); // Redirect to the ViewList page after update
+            return RedirectToAction("ViewList");
         }
 
-        // Delete Media Item: Remove a Media Item
+        // Delete media item
         [HttpPost, ActionName("Delete")]
         [Route("TRACKXD/Delete/{id}")]
         public IActionResult DeleteConfirmed(int id)
         {
             var mediaItem = MediaList.FirstOrDefault(m => m.Id == id);
-            if (mediaItem == null)
-            {
-                return NotFound();
-            }
+            if (mediaItem == null) return NotFound();
 
-            MediaList.Remove(mediaItem); // Remove the item from the list
-            SaveMediaList(); // Save the updated list to the file
+            MediaList.Remove(mediaItem);
+            SaveMediaList();
 
             TempData["Message"] = "Item deleted successfully!";
-            return RedirectToAction("ViewList"); // Redirect to the ViewList page
+            return RedirectToAction("ViewList");
         }
 
-        // Sort Media List (AJAX-based)
+        // Sort media list (AJAX)
         [HttpGet]
         [Route("TRACKXD/SortList")]
         public IActionResult SortList(string sortBy)
         {
             if (string.IsNullOrEmpty(sortBy)) return BadRequest("Sort parameter is missing.");
 
-            List<MediaItem> sortedList = sortBy switch
+            var sortedList = sortBy switch
             {
                 "Title" => MediaList.OrderBy(item => item.Title).ToList(),
                 "YearFinished" => MediaList.OrderBy(item => item.YearFinished).ToList(),

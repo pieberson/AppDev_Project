@@ -12,23 +12,23 @@ namespace AppDev.Models
         [Display(Name = "Media Type")]
         public string Class { get; set; }
 
-        // Title of the media (required and with validation for length)
+        // Title of the media 
         [Required(ErrorMessage = "Title is required.")]
         [StringLength(100, ErrorMessage = "Title cannot exceed 100 characters.")]
         [Display(Name = "Media Title")]
         public string Title { get; set; }
 
-        // Year the media was completed
+        // Year 
         [Range(1900, 2100, ErrorMessage = "Year Finished must be between 1900 and 2100.")]
         [Display(Name = "Year Finished")]
         public int YearFinished { get; set; }
 
-        // Rating given by the user (1-5 stars)
+        // Rating
         [Range(1, 5, ErrorMessage = "Rating must be between 1 and 5.")]
         [Display(Name = "Rating (1-5 Stars)")]
         public int Rating { get; set; }
 
-        // Optional review text
+        // Optional review 
         [Display(Name = "Review (Optional)")]
         public string Review { get; set; }
 
@@ -37,7 +37,7 @@ namespace AppDev.Models
         [Display(Name = "Season Number")]
         public int? Season { get; set; }
 
-        // Custom ToString method for better display in lists or logs
+        // Custom ToString method 
         public override string ToString()
         {
             return $"{Title} ({Class}, {YearFinished}) - {Rating} Stars";
